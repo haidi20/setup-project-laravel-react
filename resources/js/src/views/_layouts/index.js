@@ -52,12 +52,13 @@ const mainLayout = ({children}) => {
             // onCollapse={() => onCollapse()}
 
             breakpoint="lg"
-            collapsedWidth={0}
+            collapsedWidth={isMobile ? 0 : undefined}
             onBreakpoint={broken => { // UNTUK DETEKSI MOBILE / WEB
               // console.log('broken '+broken);
               setIsMobile(broken);
               setCollapsed(broken);
               setHideButton(broken);
+              !broken && setVisible(broken);
             }}
             onCollapse={(collapsed, type) => { // 
               // console.log('collapsed');
