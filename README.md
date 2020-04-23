@@ -1,6 +1,6 @@
 # Setup Project Laravel & React
 
-## Describe Project
+## Project Description
 this project uses Laravel as a backend, Reactjs as a frontend, and components UI use AntDesign.
 
 ## How to Install on Local Environment

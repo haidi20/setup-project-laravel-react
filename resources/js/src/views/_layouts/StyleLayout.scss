@@ -1,0 +1,51 @@
+$blue: #404E67;
+
+.logo {
+    height: 32px;
+    // background: rgba(255, 255, 255, 0.2);
+    background: $blue;
+    margin: 16px;
+} 
+.site-layout .site-layout-background {
+    background: #fff;
+}
+.trigger {
+    font-size: 18px;
+    line-height: 64px;
+    padding: 0 24px;
+    cursor: pointer;
+    transition: color 0.3s;
+}
+.trigger:hover {
+    color: #1890ff;
+}
+  
+/* [data-theme="dark"] .site-layout .site-layout-background {
+      background: #141414;
+} */
+.ant-layout-sider-children{
+    background: $blue;
+}
+.ant-menu-dark{
+    background: $blue !important;
+}
+.ant-menu-item-only-child{
+    border-color: $blue !important;
+    background: $blue !important;
+}
+
+.ant-menu-dark .ant-menu-inline.ant-menu-sub{
+    background: $blue !important;
+}
+.ant-menu.ant-menu-dark, .ant-menu-dark .ant-menu-sub{
+    background: $blue !important;
+}
+
+.ant-menu-dark.ant-menu-dark:not(.ant-menu-horizontal) .ant-menu-item-selected {
+    background-color: #1890ff !important;
+}
+
+.ant-layout-sider-trigger{
+    background: $blue !important;
+}
+  

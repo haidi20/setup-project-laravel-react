@@ -1,14 +1,12 @@
 import React, {Component} from 'react';
+import 'antd/dist/antd.css'; 
 
-// import Route from './route/Web';
+import Route from './route/Web';
 
 class Main extends Component {
     render(){
         return(
-            // <Route />
-            <div>
-                <h2>Setup Project</h2>
-            </div>
+            <Route />
         )
     }
 }
