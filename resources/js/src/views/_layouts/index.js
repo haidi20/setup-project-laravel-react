@@ -2,20 +2,17 @@ import React , {useState} from 'react';
 // import { Link } from "react-router-dom";
 import './StyleLayout.scss';
 
+// components
+import ListMenu from './ListMenu';
+
 //third party 
-import { Layout, Menu, Breadcrumb } from 'antd';
+import { Layout, Breadcrumb } from 'antd';
 import {
-  FileOutlined,
-  TeamOutlined,
-  UserOutlined,
-  DesktopOutlined,
-  PieChartOutlined,
   MenuFoldOutlined,
   MenuUnfoldOutlined,
 } from '@ant-design/icons';
 
 const { Header, Content, Footer, Sider } = Layout;
-const { SubMenu } = Menu;
 
 
 
@@ -47,26 +44,10 @@ const mainLayout = ({children}) => {
               setCollapsed(collapsed);
             }}
           >
-            <div className="logo" />
-            <Menu theme="dark" defaultSelectedKeys={['1']} mode="inline">
-              <Menu.Item key="1">
-                <PieChartOutlined />
-                <span>Option 1</span>
-              </Menu.Item>
-              <SubMenu
-                key="sub1"
-                title={
-                  <span>
-                    <UserOutlined />
-                    <span>User</span>
-                  </span>
-                }
-              >
-                <Menu.Item key="3">Tom</Menu.Item>
-                <Menu.Item key="4">Bill</Menu.Item>
-                <Menu.Item key="5">Alex</Menu.Item>
-              </SubMenu>
-            </Menu>
+            <div className="logo" >
+              <span>Name Project</span>
+            </div>
+            <ListMenu />
           </Sider>
           <Layout className="site-layout">
             {/* <Header className="site-layout-background" style={{ padding: 0 }} /> */}
@@ -90,7 +71,7 @@ const mainLayout = ({children}) => {
                 {children}
               </div>
             </Content>
-            <Footer style={{ textAlign: 'center' }}>Ant Design ©2018 Created by Ant UED</Footer>
+            <Footer style={{ textAlign: 'center' }}>Setup Project Laravel</Footer>
           </Layout>
         </Layout>
       );

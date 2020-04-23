@@ -2,18 +2,22 @@ $blue: #404E67;
 
 .logo {
     height: 32px;
-    // background: rgba(255, 255, 255, 0.2);
-    background: $blue;
     margin: 16px;
+    background: $blue;
+
+    span{
+        color: #fff;
+        font-size: 20px;
+    }
 } 
 .site-layout .site-layout-background {
     background: #fff;
 }
 .trigger {
     font-size: 18px;
-    line-height: 64px;
     padding: 0 24px;
     cursor: pointer;
+    line-height: 64px;
     transition: color 0.3s;
 }
 .trigger:hover {
@@ -30,8 +34,8 @@ $blue: #404E67;
     background: $blue !important;
 }
 .ant-menu-item-only-child{
-    border-color: $blue !important;
     background: $blue !important;
+    border-color: $blue !important;
 }
 
 .ant-menu-dark .ant-menu-inline.ant-menu-sub{
