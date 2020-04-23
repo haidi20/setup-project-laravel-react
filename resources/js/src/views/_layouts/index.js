@@ -3,29 +3,48 @@ import React , {useState} from 'react';
 import './StyleLayout.scss';
 
 // components
-import ListMenu from './ListMenu';
+import ListMenu from './ListMenu'
 
 //third party 
-import { Layout, Breadcrumb } from 'antd';
+import { Layout, Breadcrumb, Drawer } from 'antd';
 import {
-  MenuFoldOutlined,
-  MenuUnfoldOutlined,
+  MenuOutlined
 } from '@ant-design/icons';
 
 const { Header, Content, Footer, Sider } = Layout;
 
-
-
 const mainLayout = ({children}) => {
+    const [visible, setVisible]       = useState(false);
+    const [isMobile, setIsMobile]     = useState(false);
     const [collapsed, setCollapsed]   = useState(false);
     const [hideButton, setHideButton] = useState(false);
 
     const onCollapse = () => {
-        setCollapsed(prev => !prev);
+        !isMobile 
+        ? setCollapsed(prev => !prev)
+        : setVisible(prev => !prev);
+    }
+
+    const menuMobile = () => {
+      setVisible(prev => !prev);
     }
 
     return (
-        <Layout style={{ minHeight: '100vh' }}>
+      <div>
+        <Drawer
+          placement="left"
+          closable={false}
+          title="Basic Drawer"
+          onClose={() => menuMobile()}
+          visible={visible}
+        >
+          <p>Some contents...</p>
+          <p>Some contents...</p>
+          <p>Some contents...</p>
+        </Drawer>
+        <Layout
+          style={{ minHeight: '100vh' }}
+        >
           <Sider 
             // collapsible 
             // trigger={null}
@@ -33,13 +52,15 @@ const mainLayout = ({children}) => {
             // onCollapse={() => onCollapse()}
 
             breakpoint="lg"
-            collapsedWidth="0"
-            onBreakpoint={broken => {
+            collapsedWidth={0}
+            onBreakpoint={broken => { // UNTUK DETEKSI MOBILE / WEB
               // console.log('broken '+broken);
+              setIsMobile(broken);
               setCollapsed(broken);
               setHideButton(broken);
             }}
-            onCollapse={(collapsed, type) => {
+            onCollapse={(collapsed, type) => { // 
+              // console.log('collapsed');
               // console.log(collapsed, type);
               setCollapsed(collapsed);
             }}
@@ -53,10 +74,12 @@ const mainLayout = ({children}) => {
             {/* <Header className="site-layout-background" style={{ padding: 0 }} /> */}
             {/* <Header className="site-layout-sub-header-background" style={{ padding: 0 }} /> */}
             <Header className="site-layout-background" style={{ padding: 0 }}>
-              {!hideButton && React.createElement(collapsed ? MenuUnfoldOutlined : MenuFoldOutlined, {
-                className: 'trigger',
-                onClick: () => onCollapse(),
-              })}
+              {
+                <MenuOutlined
+                  className="trigger"
+                  onClick={() => onCollapse()}
+                />
+              }
             </Header>
             {/* <Header className="site-layout-background" style={{ padding: 0 }}>
               <MenuUnfoldOutlined className="trigger" />
@@ -74,7 +97,8 @@ const mainLayout = ({children}) => {
             <Footer style={{ textAlign: 'center' }}>Setup Project Laravel</Footer>
           </Layout>
         </Layout>
-      );
+      </div>    
+    );
 }
 
 export default mainLayout;

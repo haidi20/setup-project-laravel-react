@@ -7,7 +7,7 @@ $blue: #404E67;
 
     span{
         color: #fff;
-        font-size: 20px;
+        font-size: 15px;
     }
 } 
 .site-layout .site-layout-background {
@@ -51,5 +51,9 @@ $blue: #404E67;
 
 .ant-layout-sider-trigger{
     background: $blue !important;
+}
+
+.ant-layout-sider-zero-width-trigger-left{
+    display:none;
 }
   

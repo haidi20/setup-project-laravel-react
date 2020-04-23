@@ -20,21 +20,12 @@ const ListMenu = props => {
 
     const listMenu = [
         {name: 'Dashboard', icon: <PieChartOutlined />, isSubMenu: false},
-        {name: 'keren', icon: <PieChartOutlined />, isSubMenu: false},
         {
             name: 'User', 
             icon: <UserOutlined />,
             isSubMenu: true,
             subMenu: [
                 {name: 'Sub A', icon: null, isSubMenu: false},
-            ]
-        },
-        {
-            name: 'Organization', 
-            icon: null,
-            isSubMenu: true,
-            subMenu: [
-                {name: 'Sub Organization', icon: null, isSubMenu: false},
             ]
         },
     ];
