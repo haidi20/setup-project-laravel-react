@@ -10,9 +10,17 @@ import {
 const { SubMenu } = Menu;
 
 const ListMenu = props => {
+    const [openKeys, setOpenKeys] = useState([]);
+
+    const onOpenChange = (openKeys) => {
+        let lastKey = openKeys.slice(-1)[0];
+        lastKey = [lastKey];      
+        setOpenKeys(lastKey);  
+    }
 
     const listMenu = [
         {name: 'Dashboard', icon: <PieChartOutlined />, isSubMenu: false},
+        {name: 'keren', icon: <PieChartOutlined />, isSubMenu: false},
         {
             name: 'User', 
             icon: <UserOutlined />,
@@ -22,26 +30,34 @@ const ListMenu = props => {
             ]
         },
         {
-            name: 'Organisation', 
+            name: 'Organization', 
             icon: null,
             isSubMenu: true,
             subMenu: [
-                {name: 'Sub Organisation', icon: null, isSubMenu: false},
+                {name: 'Sub Organization', icon: null, isSubMenu: false},
             ]
         },
     ];
 
     return (
-        <Menu theme="dark" defaultSelectedKeys={['1']} mode="inline">
+        <Menu 
+            theme="dark" 
+            mode="inline"
+            openKeys={openKeys}
+            defaultSelectedKeys={['0']}
+            onOpenChange={(e) => onOpenChange(e)}
+        >
             {
                 listMenu.map((item, index) =>
                     !item.isSubMenu
-                    ?   <Menu.Item key={index}>
+                    ?   <Menu.Item 
+                            key={index} 
+                        >
                             {item.icon}
                             <span>{item.name}</span>
                         </Menu.Item>   
                     :   <SubMenu
-                            key={index}
+                            key={index} 
                             title={
                                 <span>
                                     {item.icon}
@@ -51,7 +67,11 @@ const ListMenu = props => {
                         > 
                             {
                                 item.subMenu.map((value, key) => 
-                                    <Menu.Item key={`submenu-${index}-${key}`}>{value.name}</Menu.Item>    
+                                    <Menu.Item
+                                        key={`submenu-${index}-${key}`}
+                                    >
+                                        {value.name}
+                                    </Menu.Item>    
                                 )
                             }
                         </SubMenu>
