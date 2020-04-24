@@ -1,23 +1,24 @@
 import React , {useState} from 'react';
-// import { Link } from "react-router-dom";
 import './StyleLayout.scss';
 
-// components
-import ListMenu from './ListMenu'
+// partials
+import ViewMenu from './partials/ViewMenu';
+//supports
+import {listMenu} from '../../supports/library';
 
 //third party 
-import { Layout, Breadcrumb, Drawer } from 'antd';
+import { Layout, Breadcrumb, Drawer, Menu } from 'antd';
 import {
-  MenuOutlined
+  MenuOutlined,
 } from '@ant-design/icons';
 
+const { SubMenu } = Menu;
 const { Header, Content, Footer, Sider } = Layout;
 
 const mainLayout = ({children}) => {
     const [visible, setVisible]       = useState(false);
     const [isMobile, setIsMobile]     = useState(false);
     const [collapsed, setCollapsed]   = useState(false);
-    const [hideButton, setHideButton] = useState(false);
 
     const onCollapse = () => {
         !isMobile 
@@ -38,9 +39,7 @@ const mainLayout = ({children}) => {
           onClose={() => menuMobile()}
           visible={visible}
         >
-          <p>Some contents...</p>
-          <p>Some contents...</p>
-          <p>Some contents...</p>
+          {listMenu.map((item, index) => <p key={index}>{item.name}</p>)}
         </Drawer>
         <Layout
           style={{ minHeight: '100vh' }}
@@ -53,11 +52,13 @@ const mainLayout = ({children}) => {
 
             breakpoint="lg"
             collapsedWidth={isMobile ? 0 : undefined}
-            onBreakpoint={broken => { // UNTUK DETEKSI MOBILE / WEB
+            onBreakpoint={broken => { // UNTUK DETEKSI layar MOBILE / WEB
               // console.log('broken '+broken);
+              // apakah layar mobile / web
               setIsMobile(broken);
+              // show / hide menu web
               setCollapsed(broken);
-              setHideButton(broken);
+              // menu mobile akan tertutup jika layar web
               !broken && setVisible(broken);
             }}
             onCollapse={(collapsed, type) => { // 
@@ -69,18 +70,16 @@ const mainLayout = ({children}) => {
             <div className="logo" >
               <span>Name Project</span>
             </div>
-            <ListMenu />
+            <ViewMenu />
           </Sider>
           <Layout className="site-layout">
             {/* <Header className="site-layout-background" style={{ padding: 0 }} /> */}
             {/* <Header className="site-layout-sub-header-background" style={{ padding: 0 }} /> */}
             <Header className="site-layout-background" style={{ padding: 0 }}>
-              {
-                <MenuOutlined
+              {<MenuOutlined
                   className="trigger"
                   onClick={() => onCollapse()}
-                />
-              }
+                />}
             </Header>
             {/* <Header className="site-layout-background" style={{ padding: 0 }}>
               <MenuUnfoldOutlined className="trigger" />
