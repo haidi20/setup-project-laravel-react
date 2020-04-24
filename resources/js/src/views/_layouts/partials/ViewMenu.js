@@ -13,9 +13,10 @@ const ViewMenu = props => {
     const [openKeys, setOpenKeys] = useState([]);
 
     const onOpenChange = (openKeys) => {
-        let lastKey = openKeys.slice(-1)[0];
-        lastKey = [lastKey];      
-        setOpenKeys(lastKey);  
+        // let openKeys = openKeys.slice(-1)[0];
+        // openKeys = [openKeys]; 
+        console.log(openKeys)     
+        setOpenKeys(openKeys);  
     }
 
     const clickMenu = key => {
@@ -51,17 +52,27 @@ const ViewMenu = props => {
                                 </span>
                             }
                         > 
-                            {
-                                item.subMenu.filter(item => item.showMenu).map((value, key) => 
-                                    <Menu.Item key={`submenu-${index}-${key}`}>
+                            {item.subMenu.filter(item => item.showMenu).map((value, key) => 
+                                !value.isSubMenu 
+                                ?   <Menu.Item key={`submenu-${index}-${key}`}>
                                         <span htmlFor={`submenu-${index}-${key}`}>
                                             <NavLink  to={value.path} style={{color: '#fff'}}>
                                                 <p id={`submenu-${index}-${key}`}>{value.name}</p>
                                             </NavLink>
                                         </span>
-                                    </Menu.Item>    
-                                )
-                            }
+                                    </Menu.Item>  
+                                :   <SubMenu key={`submenu-${index}-${key}`} title={value.name}>
+                                        {value.subMenu.filter(item => item.showMenu).map((subValue, subKey) => 
+                                            <Menu.Item key={`submenu-${index}-${key}-${subKey}`}>
+                                                <span htmlFor={`submenu-${index}-${key}-${subKey}`}>
+                                                    <NavLink  to={subValue.path} style={{color: '#fff'}}>
+                                                        <p id={`submenu-${index}-${key}-${subKey}`}>{subValue.name}</p>
+                                                    </NavLink>
+                                                </span>
+                                            </Menu.Item>
+                                        )}
+                                    </SubMenu>
+                            )}
                         </SubMenu>
                 )
             }
@@ -71,6 +82,11 @@ const ViewMenu = props => {
 }
 
 export default ViewMenu;
+
+{/* <SubMenu key="sub3" title="Submenu">
+<Menu.Item key="7">Option 7</Menu.Item>
+<Menu.Item key="8">Option 8</Menu.Item>
+</SubMenu> */}
 
 {/* <Menu theme="dark" defaultSelectedKeys={['1']} mode="inline">
     <Menu.Item key="1">
