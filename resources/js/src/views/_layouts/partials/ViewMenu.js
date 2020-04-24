@@ -18,6 +18,11 @@ const ViewMenu = props => {
         setOpenKeys(lastKey);  
     }
 
+    const clickMenu = key => {
+        let link = document.getElementById(key);
+        link.click();
+    }
+
     return (
         <Menu 
             theme="dark" 
@@ -27,14 +32,12 @@ const ViewMenu = props => {
             onOpenChange={(e) => onOpenChange(e)}
         >
             {
-                listMenu.map((item, index) =>
+                listMenu.filter(item => item.showMenu).map((item, index) =>
                     !item.isSubMenu
-                    ?   <Menu.Item 
-                            key={index} 
-                        >
+                    ?   <Menu.Item key={index} htmlFor={`menu-${index}`} onClick={() => clickMenu(`menu-${index}`)} > 
                             {item.icon}
-                            <span>
-                                <NavLink  to={item.path} style={{color: '#fff'}}>
+                            <span key={index} htmlFor={`menu-${index}`}>
+                                <NavLink id={`menu-${index}`} to={item.path} style={{color: '#fff'}}>
                                     {item.name}
                                 </NavLink>
                             </span>
@@ -49,13 +52,11 @@ const ViewMenu = props => {
                             }
                         > 
                             {
-                                item.subMenu.map((value, key) => 
-                                    <Menu.Item
-                                        key={`submenu-${index}-${key}`}
-                                    >
-                                        <span>
+                                item.subMenu.filter(item => item.showMenu).map((value, key) => 
+                                    <Menu.Item key={`submenu-${index}-${key}`}>
+                                        <span htmlFor={`submenu-${index}-${key}`}>
                                             <NavLink  to={value.path} style={{color: '#fff'}}>
-                                                {value.name}
+                                                <p id={`submenu-${index}-${key}`}>{value.name}</p>
                                             </NavLink>
                                         </span>
                                     </Menu.Item>    

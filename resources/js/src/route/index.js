@@ -9,10 +9,6 @@ import {
 import {listMenu} from '../supports/library';
 import MainLayout from '../views/_layouts';
 
-//pages
-import User from '../views/User';
-import Dashboard from '../views/Dashboard';
-
 const ListRoute = () => {
 
     
@@ -21,24 +17,23 @@ const ListRoute = () => {
             <HashRouter>
                 <MainLayout>
                     <Switch>
-                        <Route 
-                            path="/" 
-                            exact
-                            component={Dashboard} 
-                        /> 
-                        <Route 
-                            path="/user" 
-                            exact
-                            component={User} 
-                        />
-                        {/* {listMenu.map((item, index) => 
-                            <Route 
-                                key={index}
-                                path={item.path} 
-                                exact
-                                component={item.component} 
-                            />    
-                        )} */}
+                        {listMenu.map((item, index) => 
+                            !item.isSubMenu  
+                            ?   <Route 
+                                    key={index}
+                                    path={item.path} 
+                                    exact
+                                    render={ () => item.component} 
+                                />
+                            : item.subMenu.map((value, key) => 
+                                <Route 
+                                    key={key}
+                                    path={value.path} 
+                                    exact
+                                    render={ () => value.component} 
+                                />    
+                            )
+                        )}
                     </Switch>                 
                 </MainLayout>
             </HashRouter>
