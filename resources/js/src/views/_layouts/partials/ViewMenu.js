@@ -28,7 +28,7 @@ const ViewMenu = props => {
 
     const handleOpenChange = e => {
         let sequence= e.item.props["data-sequence"];
-        sequence = sequence.toString().split(",");
+        sequence = sequence.toString().split(","); // dari string jadikan array yg di pisah dengan ,
 
         setOpenKeys(sequence);
     }
@@ -42,21 +42,19 @@ const ViewMenu = props => {
 
         if(id !== null){
             sequence        = id.dataset.sequence;
-            sequence        = sequence.toString().split(",");
+            sequence        = sequence.toString().split(","); // dari string jadikan array yg di pisah dengan ,
         }
 
         setOpenKeys(sequence);  
     }
 
-    const subMenu = (item, index, sequence) => {
-        let level = index.toString().split("_").length;        
+    const subMenu = (item, index, sequence) => {       
 
         return(
             <SubMenu
                 id={index} 
                 key={index}
-                data-level={level}
-                data-sequence={[...sequence]}
+                data-sequence={[...sequence]} // memasukkan dari sequence sebelumnya
                 title={
                     <span>
                         {item.icon}
@@ -66,18 +64,17 @@ const ViewMenu = props => {
             > 
                 {item.subMenu.filter(item => item.showMenu).map((value, key) => {
                     let setKey = `${index}_${key}`;
-                    let subSequence = [...sequence, setKey];
+                    let subSequence = [...sequence, setKey]; // menggabungkan sequence sebelumnya dengan setKey sekarang
                     return(
                         !value.isSubMenu 
                         ?  <Menu.Item 
                             // id={setKey} 
                             key={setKey}
-                            data-level={(Number(level) + 1)}
                             data-sequence={subSequence}
                             onClick={(e) => handleOpenChange(e)}
                         >
                                 <span htmlFor={setKey}>
-                                    <NavLink id={setKey} to={value.path} style={{color: '#fff'}}>
+                                    <NavLink id={setKey} to={value.path}>
                                         <p >{value.name}</p>
                                     </NavLink>
                                 </span>
@@ -106,12 +103,12 @@ const ViewMenu = props => {
                         ?   <Menu.Item 
                                 key={setIndex} 
                                 data-level="1"
-                                data-sequence={[setIndex]}
+                                data-sequence={[setIndex]} // membuat initial antrian
                                 onClick={(e) => handleMenu(e, setIndex)}
                             > 
                                 {item.icon}
                                 <span key={setIndex}>
-                                    <NavLink id={setIndex} to={item.path} style={{color: '#fff'}}>
+                                    <NavLink id={setIndex} to={item.path}>
                                         {item.name}
                                     </NavLink>
                                 </span>

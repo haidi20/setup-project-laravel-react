@@ -3,22 +3,20 @@ import './StyleLayout.scss';
 
 // partials
 import ViewMenu from './partials/ViewMenu';
-//supports
-import {listMenu} from '../../supports/library';
 
 //third party 
-import { Layout, Breadcrumb, Drawer, Menu } from 'antd';
+import { Layout, Breadcrumb, Drawer } from 'antd';
 import {
   MenuOutlined,
 } from '@ant-design/icons';
 
-const { SubMenu } = Menu;
 const { Header, Content, Footer, Sider } = Layout;
 
 const mainLayout = ({children}) => {
-    const [visible, setVisible]       = useState(false);
-    const [isMobile, setIsMobile]     = useState(false);
-    const [collapsed, setCollapsed]   = useState(false);
+    const [visible, setVisible]         = useState(false);
+    const [isMobile, setIsMobile]       = useState(false);
+    const [collapsed, setCollapsed]     = useState(false);
+    const [nameProject, setNameProject] = useState('Nama Project');
 
     const onCollapse = () => {
         !isMobile 
@@ -35,11 +33,11 @@ const mainLayout = ({children}) => {
         <Drawer
           placement="left"
           closable={false}
-          title="Basic Drawer"
+          title={nameProject}
           onClose={() => menuMobile()}
           visible={visible}
         >
-          {listMenu.map((item, index) => <p key={index}>{item.name}</p>)}
+          <ViewMenu />
         </Drawer>
         <Layout
           style={{ minHeight: '100vh' }}
@@ -68,9 +66,10 @@ const mainLayout = ({children}) => {
             }}
           >
             <div className="logo" >
-              <span>Name Project</span>
+              <span>{nameProject}</span>
             </div>
-            <ViewMenu />
+            {/* LIST MENU */}
+            <ViewMenu /> 
           </Sider>
           <Layout className="site-layout">
             {/* <Header className="site-layout-background" style={{ padding: 0 }} /> */}

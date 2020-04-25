@@ -27,16 +27,6 @@ export const listMenu = [
         subMenu:null,
     },
     {
-        name: 'Dashboard2', 
-        icon: <PieChartOutlined />, 
-        path: '/',
-        exact: true,
-        showMenu: true,
-        isSubMenu: false,
-        component: <Dashboard />,
-        subMenu:null,
-    },
-    {
         name: 'User', 
         icon: <UserOutlined />,
         path: null,

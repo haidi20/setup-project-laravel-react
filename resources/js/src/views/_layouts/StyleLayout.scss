@@ -1,9 +1,10 @@
-$blue: #404E67;
+$mainColor: #404E67 !important;
+$noActive: rgba(255, 255, 255, 0.65);
 
 .logo {
     height: 32px;
     margin: 16px;
-    background: $blue;
+    background: $mainColor;
 
     span{
         color: #fff;
@@ -23,37 +24,62 @@ $blue: #404E67;
 .trigger:hover {
     color: #1890ff;
 }
-  
-/* [data-theme="dark"] .site-layout .site-layout-background {
-      background: #141414;
-} */
+
+// start custom style menu mobile
+
+.ant-drawer-header{
+    color: #fff;
+    background: $mainColor;
+    border-bottom: 1px solid $mainColor;
+
+    .ant-drawer-title{
+        color: #fff;
+    }
+}
+.ant-drawer-body{
+    padding: 0px !important;
+    background: $mainColor;
+}
+
+//end custom style menu mobile
+
+
+// start color menu
 .ant-layout-sider-children{
-    background: $blue;
+    background: $mainColor;
 }
 .ant-menu-dark{
-    background: $blue !important;
+    background: $mainColor;
 }
 .ant-menu-item-only-child{
-    background: $blue !important;
-    border-color: $blue !important;
+    background: $mainColor;
+    border-color: $mainColor;
 }
-
 .ant-menu-dark .ant-menu-inline.ant-menu-sub{
-    background: $blue !important;
+    background: $mainColor;
 }
 .ant-menu.ant-menu-dark, .ant-menu-dark .ant-menu-sub{
-    background: $blue !important;
+    background: $mainColor;
 }
-
 .ant-menu-dark.ant-menu-dark:not(.ant-menu-horizontal) .ant-menu-item-selected {
     background-color: #1890ff !important;
 }
-
 .ant-layout-sider-trigger{
-    background: $blue !important;
+    background: $mainColor;
 }
-
 .ant-layout-sider-zero-width-trigger-left{
     display:none;
 }
+.ant-menu-item{
+    span{
+        a{
+            color: $noActive;
+
+            &.active{
+                color: #fff;
+            }
+        }
+    }
+}
+// end color menu
   
