@@ -10,13 +10,19 @@ import {listMenu} from '../supports/library';
 import MainLayout from '../views/_layouts';
 
 const ListRoute = () => {
-    // const routeComponents = routes.map(({path, component}, key) => <Route exact path={path} component={component} key={key} />);
-    // return (
-    //   <BrowserRouter>
-    //     {routeComponents}
-    //     </div>
-    //   </BrowserRouter>
-    // );
+
+    const subRoute = item => (
+        item.subMenu.map((value, key) => 
+            !value.isSubMenu 
+            ?    <Route 
+                    key={`sub-${key}`}
+                    path={value.path} 
+                    exact
+                    render={ () => value.component} 
+                />
+            : subRoute(value)
+        )
+    )
     
     return(
         <Router>
@@ -31,15 +37,7 @@ const ListRoute = () => {
                                     path={item.path} 
                                     render={() => item.component} 
                                 />
-                            : item.subMenu.map((value, key) => 
-                                !value.isSubMenu &&
-                                    <Route 
-                                        key={`sub-${key}`}
-                                        path={value.path} 
-                                        exact
-                                        render={ () => value.component} 
-                                    />
-                            )
+                            : subRoute(item)
                         )}                    
                     </Switch>                 
                 </MainLayout>
