@@ -1,4 +1,4 @@
-import React, {Component} from 'react';
+import React, {Suspense, lazy} from 'react';
 import {
     Route,
     Switch,
@@ -6,8 +6,8 @@ import {
     BrowserRouter as Router,
   } from "react-router-dom";
 
-import {listMenu} from '../supports/library';
 import MainLayout from '../views/_layouts';
+import listMenu from '../supports/ListMenu';
 
 const ListRoute = props => {
 
@@ -27,9 +27,9 @@ const ListRoute = props => {
     return(
         <Router>
             <HashRouter>
-                <MainLayout>
-                    <Switch>
-                        {listMenu.map((item, index) =>
+                <Switch>
+                    <MainLayout>
+                        {listMenu.filter(item => item !== item[0]).map((item, index) =>
                             !item.isSubMenu  
                             ?   <Route 
                                     exact 
@@ -38,35 +38,12 @@ const ListRoute = props => {
                                     render={() => item.component} 
                                 />
                             : subRoute(item)
-                        )}                    
-                    </Switch>                 
-                </MainLayout>
+                        )}
+                    </MainLayout>              
+                </Switch>                 
             </HashRouter>
         </Router>
     )
 }
 
 export default ListRoute;
-
-// {listMenu.map((item, index) => 
-//     {
-//         console.log(item);
-//         return(
-//             !item.isSubMenu  
-//             ?   <Route 
-//                     key={index}
-//                     path={item.path} 
-//                     exact
-//                     render={ () => item.component} 
-//                 />
-//             : item.subMenu.map((value, key) => 
-//                 <Route 
-//                     key={key}
-//                     path={value.path} 
-//                     exact
-//                     render={ () => value.component} 
-//                 />    
-//             )
-//         )
-//     }
-// )}

@@ -1,8 +1,7 @@
 import React, {useState, useEffect} from 'react';
 import { NavLink, withRouter } from "react-router-dom";
 
-//supports
-import {listMenu} from '../../../supports/library';
+import listMenu from '../../../supports/ListMenu';
 
 //third party 
 import { Menu } from 'antd';
@@ -16,7 +15,7 @@ const ViewMenu = props => {
     const [openKeys, setOpenKeys] = useState([]);
 
     useEffect(() => {
-        console.log('openKey = '+openKeys);
+        // console.log('openKey = '+openKeys);
     }, [openKeys])
 
     const handleMenu = (e, setIndex) => {
@@ -58,11 +57,11 @@ const ViewMenu = props => {
         let sequence = document.querySelector('.ant-menu-item-selected');
 
         if(sequence !== null){
-            console.log('tidak kosong');
+            // console.log('tidak kosong');
             sequence = sequence.getAttribute('data-sequence');
-            setOpenKeys(sequence);
+            setOpenKeys([sequence]);
         }else{
-            console.log('kosong');
+            // console.log('kosong');
         }
 
     }, []);
@@ -153,40 +152,3 @@ const ViewMenu = props => {
 }
 
 export default withRouter(ViewMenu);
-
-{/* <SubMenu key="sub3" title="Submenu">
-<Menu.Item key="7">Option 7</Menu.Item>
-<Menu.Item key="8">Option 8</Menu.Item>
-</SubMenu> */}
-
-{/* <Menu theme="dark" defaultSelectedKeys={['1']} mode="inline">
-    <Menu.Item key="1">
-        <PieChartOutlined />
-        <span>Option 1</span>
-    </Menu.Item>
-    <SubMenu
-        key="sub1"
-        title={
-            <span>
-                <UserOutlined />
-                <span>User</span>
-            </span>
-        }
-    >
-        <Menu.Item key="3">Tom</Menu.Item>
-        <Menu.Item key="4">Bill</Menu.Item>
-        <Menu.Item key="5">Alex</Menu.Item>
-    </SubMenu>
-</Menu> */}
-
-{/* <SubMenu key={`submenu-${index}-${key}`} title={value.name}>
-    {value.subMenu.filter(item => item.showMenu).map((subValue, subKey) => 
-        <Menu.Item key={`submenu-${index}-${key}-${subKey}`}>
-            <span htmlFor={`submenu-${index}-${key}-${subKey}`}>
-                <NavLink  to={subValue.path} style={{color: '#fff'}}>
-                    <p id={`submenu-${index}-${key}-${subKey}`}>{subValue.name}</p>
-                </NavLink>
-            </span>
-        </Menu.Item>
-    )}
-</SubMenu> */}

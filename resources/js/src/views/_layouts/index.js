@@ -43,15 +43,11 @@ const mainLayout = ({children}) => {
           style={{ minHeight: '100vh' }}
         >
           <Sider 
-            // collapsible 
-            // trigger={null}
             collapsed={collapsed}
-            // onCollapse={() => onCollapse()}
 
             breakpoint="lg"
             collapsedWidth={isMobile ? 0 : undefined}
             onBreakpoint={broken => { // UNTUK DETEKSI layar MOBILE / WEB
-              // console.log('broken '+broken);
               // apakah layar mobile / web
               setIsMobile(broken);
               // show / hide menu web
@@ -59,9 +55,7 @@ const mainLayout = ({children}) => {
               // menu mobile akan tertutup jika layar web
               !broken && setVisible(broken);
             }}
-            onCollapse={(collapsed, type) => { // 
-              // console.log('collapsed');
-              // console.log(collapsed, type);
+            onCollapse={(collapsed, type) => { 
               setCollapsed(collapsed);
             }}
           >
@@ -72,18 +66,12 @@ const mainLayout = ({children}) => {
             <ViewMenu /> 
           </Sider>
           <Layout className="site-layout">
-            {/* <Header className="site-layout-background" style={{ padding: 0 }} /> */}
-            {/* <Header className="site-layout-sub-header-background" style={{ padding: 0 }} /> */}
             <Header className="site-layout-background" style={{ padding: 0 }}>
               {<MenuOutlined
                   className="trigger"
                   onClick={() => onCollapse()}
                 />}
             </Header>
-            {/* <Header className="site-layout-background" style={{ padding: 0 }}>
-              <MenuUnfoldOutlined className="trigger" />
-              <MenuFoldOutlined className="trigger" />
-            </Header> */}
             <Content style={{ margin: '0 16px' }}>
               <Breadcrumb style={{ margin: '16px 0' }}>
                 {/* <Breadcrumb.Item>User</Breadcrumb.Item>
