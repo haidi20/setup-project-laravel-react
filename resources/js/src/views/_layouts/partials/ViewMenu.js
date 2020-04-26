@@ -9,6 +9,9 @@ import { Menu } from 'antd';
 
 const { SubMenu } = Menu;
 
+/* NOTE*
+    sequence = list key yang sedang terbuka. sangat berguna untuk sub menu ketika aktif.
+*/
 const ViewMenu = props => {
     const [openKeys, setOpenKeys] = useState([]);
 
@@ -50,18 +53,25 @@ const ViewMenu = props => {
         setOpenKeys(sequence);  
     }
 
-    // useEffect(() => {
-    //     const pathName  = props.location.pathname;
+    // default active menu
+    useEffect(() => {
+        let sequence = document.querySelector('.ant-menu-item-selected');
 
-    //     if(pathName !== path){
-            
-    //     }
-    // }, [])
+        if(sequence !== null){
+            console.log('tidak kosong');
+            sequence = sequence.getAttribute('data-sequence');
+            setOpenKeys(sequence);
+        }else{
+            console.log('kosong');
+        }
 
-    const getActiveClass = path => {
+    }, []);
+
+    const getActiveClass = (path, sequence) => {
         const pathName  = props.location.pathname;
 
         if(pathName === path){
+            // console.log('sama');
             return 'ant-menu-item-selected';
         }
     }
@@ -90,6 +100,7 @@ const ViewMenu = props => {
                             key={setKey}
                             data-sequence={subSequence}
                             onClick={e => handleOpenChange(e, setKey)}
+                            className={getActiveClass(value.path, subSequence)}
                         >
                                 <span htmlFor={setKey}>
                                     <NavLink id={setKey} to={value.path}>
@@ -109,7 +120,7 @@ const ViewMenu = props => {
             theme="dark" 
             mode="inline"
             openKeys={openKeys}
-            // defaultSelectedKeys={['0']}
+            // defaultSelectedKeys={[]}
             onOpenChange={(e) => onOpenChange(e)}
             // onClick={(e) => handleOpenChange(e)}
         >
@@ -123,7 +134,7 @@ const ViewMenu = props => {
                                 data-level="1"
                                 data-sequence={[setIndex]} // membuat initial antrian
                                 onClick={(e) => handleMenu(e, setIndex)}
-                                className={getActiveClass(item.path)}
+                                className={getActiveClass(item.path, setIndex)}
                             > 
                                 {item.icon}
                                 <span key={setIndex}>
