@@ -1,5 +1,5 @@
 import React, {useState, useEffect} from 'react';
-import { NavLink } from "react-router-dom";
+import { NavLink, withRouter } from "react-router-dom";
 
 //supports
 import {listMenu} from '../../../supports/library';
@@ -13,12 +13,12 @@ const ViewMenu = props => {
     const [openKeys, setOpenKeys] = useState([]);
 
     useEffect(() => {
-        // console.log('current = '+openKeys);
+        console.log('openKey = '+openKeys);
     }, [openKeys])
 
     const handleMenu = (e, setIndex) => {
         clickMenu(setIndex);
-        handleOpenChange(e);
+        handleOpenChange(e, setIndex);
     }
 
     const clickMenu = key => {
@@ -26,9 +26,9 @@ const ViewMenu = props => {
         link.click();
     }
 
-    const handleOpenChange = e => {
+    const handleOpenChange = (e, key) => {
         let sequence= e.item.props["data-sequence"];
-        sequence = sequence.toString().split(","); // dari string jadikan array yg di pisah dengan ,
+        sequence    = sequence.toString().split(","); // dari string jadikan array yg di pisah dengan ,
 
         setOpenKeys(sequence);
     }
@@ -41,11 +41,29 @@ const ViewMenu = props => {
         let sequence= [];
 
         if(id !== null){
-            sequence        = id.dataset.sequence;
-            sequence        = sequence.toString().split(","); // dari string jadikan array yg di pisah dengan ,
+            sequence = id.dataset.sequence;
+            if(sequence !== undefined){
+                sequence = sequence.toString().split(","); // dari string jadikan array yg di pisah dengan ,
+            }
         }
 
         setOpenKeys(sequence);  
+    }
+
+    // useEffect(() => {
+    //     const pathName  = props.location.pathname;
+
+    //     if(pathName !== path){
+            
+    //     }
+    // }, [])
+
+    const getActiveClass = path => {
+        const pathName  = props.location.pathname;
+
+        if(pathName === path){
+            return 'ant-menu-item-selected';
+        }
     }
 
     const subMenu = (item, index, sequence) => {       
@@ -71,7 +89,7 @@ const ViewMenu = props => {
                             // id={setKey} 
                             key={setKey}
                             data-sequence={subSequence}
-                            onClick={(e) => handleOpenChange(e)}
+                            onClick={e => handleOpenChange(e, setKey)}
                         >
                                 <span htmlFor={setKey}>
                                     <NavLink id={setKey} to={value.path}>
@@ -91,7 +109,7 @@ const ViewMenu = props => {
             theme="dark" 
             mode="inline"
             openKeys={openKeys}
-            defaultSelectedKeys={['0']}
+            // defaultSelectedKeys={['0']}
             onOpenChange={(e) => onOpenChange(e)}
             // onClick={(e) => handleOpenChange(e)}
         >
@@ -105,6 +123,7 @@ const ViewMenu = props => {
                                 data-level="1"
                                 data-sequence={[setIndex]} // membuat initial antrian
                                 onClick={(e) => handleMenu(e, setIndex)}
+                                className={getActiveClass(item.path)}
                             > 
                                 {item.icon}
                                 <span key={setIndex}>
@@ -122,7 +141,7 @@ const ViewMenu = props => {
         
 }
 
-export default ViewMenu;
+export default withRouter(ViewMenu);
 
 {/* <SubMenu key="sub3" title="Submenu">
 <Menu.Item key="7">Option 7</Menu.Item>

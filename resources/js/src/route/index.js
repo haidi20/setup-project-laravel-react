@@ -9,15 +9,15 @@ import {
 import {listMenu} from '../supports/library';
 import MainLayout from '../views/_layouts';
 
-const ListRoute = () => {
+const ListRoute = props => {
 
     const subRoute = item => (
         item.subMenu.map((value, key) => 
             !value.isSubMenu 
             ?    <Route 
-                    key={`sub-${key}`}
-                    path={value.path} 
                     exact
+                    path={value.path} 
+                    key={`sub-${key}`}
                     render={ () => value.component} 
                 />
             : subRoute(value)

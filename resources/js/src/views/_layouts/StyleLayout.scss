@@ -1,5 +1,4 @@
 $mainColor: #404E67 !important;
-$noActive: rgba(255, 255, 255, 0.65);
 
 .logo {
     height: 32px;
@@ -70,14 +69,17 @@ $noActive: rgba(255, 255, 255, 0.65);
 .ant-layout-sider-zero-width-trigger-left{
     display:none;
 }
+.ant-menu-item.ant-menu-item-selected{
+    span{
+        a{
+            color: #fff;
+        }
+    }
+}
 .ant-menu-item{
     span{
         a{
-            color: $noActive;
-
-            &.active{
-                color: #fff;
-            }
+            color: rgba(255, 255, 255, 0.65);
         }
     }
 }
