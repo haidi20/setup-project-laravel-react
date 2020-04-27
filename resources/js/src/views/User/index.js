@@ -1,6 +1,9 @@
-import React from 'react';
+import React, {useReducer} from 'react';
+import {connect} from 'react-redux';
 
-const user = () => {
+const user = props => {
+
+    console.log(props);
 
     return(
         <div>
@@ -9,4 +12,16 @@ const user = () => {
     )
 }
 
-export default user;
+const state = state => {
+    return{
+        state: state,
+    }
+}
+
+const reducer = reducer => {
+    return{
+        openModal: null,
+    }
+}
+
+export default connect(state, reducer)(user);

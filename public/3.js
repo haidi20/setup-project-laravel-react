@@ -1,2 +1,0 @@
-(window.webpackJsonp=window.webpackJsonp||[]).push([[3],{184:function(e,n,t){"use strict";t.r(n);var r=t(0),a=t.n(r);n.default=function(){return a.a.createElement("div",null,a.a.createElement("h1",null,"Form User"))}}}]);
-//# sourceMappingURL=3.js.map

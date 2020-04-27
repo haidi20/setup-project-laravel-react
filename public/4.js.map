@@ -1,1 +1,0 @@
-{"version":3,"sources":["webpack:///./resources/js/src/views/User/index.js"],"names":["user"],"mappings":"0FAAA,2BAWeA,UATF,WAET,OACI,6BACI","file":"4.js","sourcesContent":["import React from 'react';\r\n\r\nconst user = () => {\r\n\r\n    return(\r\n        <div>\r\n            <h1>Table User</h1>\r\n        </div>\r\n    )\r\n}\r\n\r\nexport default user;"],"sourceRoot":""}

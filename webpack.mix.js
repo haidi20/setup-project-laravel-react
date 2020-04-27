@@ -19,6 +19,14 @@ mix.babelConfig({
    plugins: ['@babel/plugin-syntax-dynamic-import'],
 });
 
+mix.webpackConfig({ 
+   output: { 
+      filename: '[name].js',
+      chunkFilename: 'js/chunks/[name].app.js', 
+      publicPath: '/' 
+   } 
+});
+
 // mix.webpackConfig({
 //    output: {
 //       publicPath: '/public/',
