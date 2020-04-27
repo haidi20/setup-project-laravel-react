@@ -8,6 +8,7 @@ import {
 
 import MainLayout from '../views/_layouts';
 import listMenu from '../supports/listMenu';
+import Loading from '../views/_layouts/Loading';
 
 const ListRoute = props => {
 
@@ -26,7 +27,7 @@ const ListRoute = props => {
     
     return(
         <Router>
-            <Suspense fallback={<div>Loading...</div>}>
+            <Suspense fallback={<Loading />}>
             <HashRouter>
                 <Switch>
                     <MainLayout>

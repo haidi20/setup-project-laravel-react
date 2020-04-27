@@ -2,6 +2,8 @@
 
 ## Project Description
 this project uses Laravel as a backend, Reactjs as a frontend, and components UI use AntDesign.
+List Tasks Setup Project [here](https://trello.com/b/CdOg2gr9)
+
 
 ## list version
 ### composer.json
@@ -10,6 +12,7 @@ this project uses Laravel as a backend, Reactjs as a frontend, and components UI
 ### package.json
 - react js ^16.2
 - laravel-mix ^4.0.16 (important for route lazy react) 
+- antDesign ^4.1.4
 
 ## How to Install on Local Environment
 You can follow the following step to configure this project
@@ -21,5 +24,5 @@ You can follow the following step to configure this project
   ```$ php artisan key:generate``` <br>
   ```$ php artisan migrate``` <br>
   ```$ php artisan db:seed``` <br>
-  ```$ yarn install * for install package node_modules ``` <br>
+  ```$ yarn install (for install package node_modules) ``` <br>
 - And run command ```$ php artisan serve``` and take a look at "localhost:8000" in browser
