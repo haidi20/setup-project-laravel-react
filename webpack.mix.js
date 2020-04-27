@@ -26,10 +26,3 @@ mix.webpackConfig({
       publicPath: '/' 
    } 
 });
-
-// mix.webpackConfig({
-//    output: {
-//       publicPath: '/public/',
-//       chunkFilename: 'js/chunks/[name].js',
-//    },
-// });

@@ -1,27 +1,30 @@
-import React, {useReducer} from 'react';
+import React, {useEffect} from 'react';
 import {connect} from 'react-redux';
 
 const user = props => {
-
     console.log(props);
+    const {modal}       = props.datatable;
+    const {openModal}   = props;
 
     return(
         <div>
             <h1>Table User</h1>
+            <button onClick={() => openModal()}>buka modal</button>
+            <p>open modal : {modal ? 1 : 0}</p>
         </div>
     )
 }
 
-const state = state => {
+const mapStateToProps = state => {
     return{
-        state: state,
+        datatable: state.datatable,
     }
 }
 
-const reducer = reducer => {
+const mapDispatchToProps = dispatch => {
     return{
-        openModal: null,
+        openModal: () => dispatch({type: 'OPEN_MODAL'}),
     }
 }
 
-export default connect(state, reducer)(user);
+export default connect(mapStateToProps, mapDispatchToProps)(user);
