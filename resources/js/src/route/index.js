@@ -1,13 +1,13 @@
-import React, {Suspense, lazy} from 'react';
+import React, { Suspense } from 'react';
 import {
     Route,
     Switch,
     HashRouter,
     BrowserRouter as Router,
-  } from "react-router-dom";
+} from "react-router-dom";
 
 import MainLayout from '../views/_layouts';
-import listMenu from '../supports/ListMenu';
+import listMenu from '../supports/listMenu';
 
 const ListRoute = props => {
 
@@ -26,6 +26,7 @@ const ListRoute = props => {
     
     return(
         <Router>
+            <Suspense fallback={<div>Loading...</div>}>
             <HashRouter>
                 <Switch>
                     <MainLayout>
@@ -39,9 +40,10 @@ const ListRoute = props => {
                                 />
                             : subRoute(item)
                         )}
-                    </MainLayout>              
+                    </MainLayout>         
                 </Switch>                 
             </HashRouter>
+            </Suspense>    
         </Router>
     )
 }

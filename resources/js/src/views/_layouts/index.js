@@ -28,6 +28,16 @@ const mainLayout = ({children}) => {
       setVisible(prev => !prev);
     }
 
+    // UNTUK DETEKSI layar MOBILE / WEB
+    const handleOnBreakpoint = broken => { 
+      // apakah layar mobile / web
+      setIsMobile(broken);
+      // show / hide menu web
+      setCollapsed(broken);
+      // menu mobile akan tertutup jika layar web
+      !broken && setVisible(broken);
+    }
+
     return (
       <div>
         <Drawer
@@ -47,17 +57,8 @@ const mainLayout = ({children}) => {
 
             breakpoint="lg"
             collapsedWidth={isMobile ? 0 : undefined}
-            onBreakpoint={broken => { // UNTUK DETEKSI layar MOBILE / WEB
-              // apakah layar mobile / web
-              setIsMobile(broken);
-              // show / hide menu web
-              setCollapsed(broken);
-              // menu mobile akan tertutup jika layar web
-              !broken && setVisible(broken);
-            }}
-            onCollapse={(collapsed, type) => { 
-              setCollapsed(collapsed);
-            }}
+            onBreakpoint={broken => handleOnBreakpoint(broken)}
+            onCollapse={(collapsed, type) => {setCollapsed(collapsed);}}
           >
             <div className="logo" >
               <span>{nameProject}</span>

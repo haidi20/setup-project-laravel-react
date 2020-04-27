@@ -14,3 +14,14 @@ const mix = require('laravel-mix');
 mix.react('resources/js/app.js', 'public/js')
    .sass('resources/sass/app.scss', 'public/css')
    .sourceMaps();
+
+mix.babelConfig({
+   plugins: ['@babel/plugin-syntax-dynamic-import'],
+});
+
+// mix.webpackConfig({
+//    output: {
+//       publicPath: '/public/',
+//       chunkFilename: 'js/chunks/[name].js',
+//    },
+// });

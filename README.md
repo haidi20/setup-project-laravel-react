@@ -3,6 +3,14 @@
 ## Project Description
 this project uses Laravel as a backend, Reactjs as a frontend, and components UI use AntDesign.
 
+## list version
+### composer.json
+- php ^7.2
+- Laravel 5.8
+### package.json
+- react js ^16.2
+- laravel-mix ^4.0.16 (important for route lazy react) 
+
 ## How to Install on Local Environment
 You can follow the following step to configure this project
 - Clone the repository using the command "git clone https://github.com/haidi20/setup-project.git"

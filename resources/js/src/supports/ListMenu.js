@@ -8,14 +8,13 @@ import {
 
 // pages
 // dashboard
-import Dashboard from '../views/Dashboard';
+
+const Dashboard = React.lazy(() => import('../views/Dashboard'));
 // auth
-import Logout from '../views/Auth/Logout';
+const Logout = React.lazy(() => import('../views/Auth/logout'));
 // user
-import User from '../views/User';
-import FormUser from '../views/User/FormUser';
-// errors
-import NotFound from '../views/Errors/NotFound';
+const User = React.lazy(() => import('../views/User'));
+const FormUser = React.lazy(() => import('../views/User/FormUser'));
 
 const listMenu = [
     {

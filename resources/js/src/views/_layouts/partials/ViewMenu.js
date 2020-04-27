@@ -1,7 +1,7 @@
 import React, {useState, useEffect} from 'react';
 import { NavLink, withRouter } from "react-router-dom";
 
-import listMenu from '../../../supports/ListMenu';
+import listMenu from '../../../supports/listMenu';
 
 //third party 
 import { Menu } from 'antd';
