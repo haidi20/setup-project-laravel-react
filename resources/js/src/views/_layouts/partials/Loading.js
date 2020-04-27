@@ -1,12 +1,15 @@
 import React from 'react';
 
-const Loading = props => {
+import MainLayout from '../index';
+import { Spin } from 'antd';
+
+const loading = props => {
 
     return(
-        <div>
-            Loading...
-        </div>
+        <Spin tip="Loading...">
+            <MainLayout />
+        </Spin>
     )
 }
 
-export default Loading;
+export default loading;
