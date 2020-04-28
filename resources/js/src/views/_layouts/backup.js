@@ -6,9 +6,6 @@ import ViewMenu from './partials/ViewMenu';
 
 //third party 
 import 'antd/lib/layout/style/css';
-import 'antd/lib/breadcrumb/style/css';
-import 'antd/lib/drawer/style/css';
-// import 'antd/dist/antd.css';
 import { Layout, Breadcrumb, Drawer } from 'antd';
 import {
   MenuOutlined,

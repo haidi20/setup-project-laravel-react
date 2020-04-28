@@ -1,0 +1,2 @@
+(window.webpackJsonp=window.webpackJsonp||[]).push([[4],{211:function(e,n,t){"use strict";t.r(n);var a=t(0),l=t.n(a),o=t(43);n.default=Object(o.b)((function(e){return{datatable:e.datatable}}),(function(e){return{openModal:function(){return e({type:"OPEN_MODAL"})}}}))((function(e){console.log(e);var n=e.datatable.modal,t=e.openModal;return l.a.createElement("div",null,l.a.createElement("h1",null,"Table User"),l.a.createElement("button",{onClick:function(){return t()}},"buka modal"),l.a.createElement("p",null,"open modal : ",n?1:0))}))}}]);
+//# sourceMappingURL=4.app.js.map
