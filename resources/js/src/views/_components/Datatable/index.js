@@ -111,6 +111,7 @@ const datatable = props => {
                     Showing {pagination.current} of {pagination.total} entries
                 </Col>
                 <Col xs={0} sm={0} md={12}>
+                    {/* screen desktop */}
                     <Pagination 
                         style={{float: 'right'}}
                         total={pagination.total}
@@ -120,6 +121,7 @@ const datatable = props => {
                     />
                 </Col>
                 <Col xs={24} sm={24} md={0}>
+                    {/* screen mobile */}
                     <Pagination 
                         size="small"
                         total={pagination.total}

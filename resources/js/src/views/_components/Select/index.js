@@ -11,10 +11,12 @@ import {Select, Spin} from 'antd';
 const { Option } = Select;
 
 const CustomSelect = props => {
-    let typingTimer             = null;
-    const [data, setData]       = useState([]);
-    const [search, setSearch]   = useState();
-    const [loading, setLoading] = useState(false);
+    let typingTimer                 = null;
+    const [data, setData]           = useState([]);
+    const [search, setSearch]       = useState();
+    const [loading, setLoading]     = useState(false);
+
+    const notFoundContent = loading ? <Spin size="small" /> : 'Data Tidak Ada';
 
     useEffect(() => {
         if(props.data) setData(props.data);
@@ -29,10 +31,10 @@ const CustomSelect = props => {
         }, 300);
     }
 
-    const notFoundContent = loading ? <Spin size="small" /> : 'Data Tidak Ada';
+    const handleOnChange = e => {
+        setSearch(null);
 
-    const handleChange = e => {
-        console.log(e);
+        return props.onChange(e);
     }
 
     const fetchData = async () => {
@@ -56,22 +58,24 @@ const CustomSelect = props => {
 
     return(
         <div>
-            <label 
-                htmlFor={props.name} 
-            >
+            <label htmlFor={props.name}>
                 {props.label}
             </label>
             <Select 
                 showSearch
-                onChange={handleChange}
+                labelInValue
+                id={props.name}
+                name={props.name}
+                // value={search}
                 style={{ width: '100%' }} 
                 optionFilterProp="children"
+                onChange={e => handleOnChange(e)}
                 notFoundContent={notFoundContent}
                 placeholder={`Pilih ${props.label}`}
                 onSearch={(input, option) => handleSearch(input, option)}
             >
                 {data.map(item => 
-                    <Option key={item.value}>{item.label}</Option>    
+                    <Option key={item.key} >{item.label}</Option>    
                 )}
             </Select>
         </div>

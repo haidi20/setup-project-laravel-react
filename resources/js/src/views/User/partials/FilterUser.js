@@ -15,6 +15,11 @@ const filterUser = props => {
         {label: 'Andi', value: 2},
     ];
 
+    const onChangeName = e => {
+        console.log('on change name ');
+        console.log(e);
+    }
+
     return(
         <Collapse title="Filter Data">
             <Row>
@@ -24,6 +29,7 @@ const filterUser = props => {
                         // data={data}
                         label="Nama User"
                         url="/user/search"
+                        onChange={onChangeName}
                     />
                 </Col>
             </Row>
