@@ -1,0 +1,64 @@
+$info: #17c0eb;
+$warning: #ff9f1a;
+$success: #3ae374;
+
+$info-second: #18dcff;
+$warning-second: #ffaf40;
+$success-second: #32ff7e;
+
+hr{
+    height: 1px;
+    border: none;
+    background-color: rgb(221, 219, 219);
+}
+
+.components-table-demo-control-bar .ant-form-item {
+    margin-right: 16px;
+    margin-bottom: 8px;
+}
+
+.ant-table-pagination {
+    display: none;
+}
+
+.bg-warning {
+    color: #fff;
+    border-color: $warning;
+    background-color: $warning;
+    
+    &:hover, &:focus{
+        color: #fff;
+        border-color: $warning-second;
+        background-color: $warning-second;
+    }
+}
+
+.bg-success {
+    color: #fff;
+    border-color: $success;
+    background-color: $success;
+    
+    &:hover, &:focus{
+        color: #fff;
+        border-color: $success-second;
+        background-color: $success-second;
+    }
+}
+
+.bg-info {
+    color: #fff;
+    border-color: $info;
+    background-color: $info;
+    
+    &:hover, &:focus{
+        color: #fff;
+        border-color: $info-second;
+        background-color: $info-second;
+    }
+}
+
+@media only screen and (max-width: 600px) {
+    .pagination { 
+        text-align: center;
+    }
+}
