@@ -1,4 +1,4 @@
-import React, {useEffect} from 'react';
+import React, {useEffect, useState} from 'react';
 import Datatable from '../_components/Datatable';
 
 import './styles.scss';
@@ -21,10 +21,17 @@ const { Content }   = Layout;
 
 const user = props => {
     const nameRoute = '/user';
+    const [addFilter, setAddFilter] = useState({
+        name: null,
+        address: null,
+    });
+    const data = [
+        {label: 'Nata', value: 0},
+        {label: 'Risky', value: 1},
+        {label: 'Andi', value: 2},
+    ];
     const columns = [
         {title: 'Name', dataIndex: 'name', key: 'name'},
-        // {title: 'Email', dataIndex: 'email', key: 'email'},
-        // {title: 'Address', dataIndex: 'address', key: 'address'},
     ];
     const addActions = [
         {title: <BarsOutlined />, color: 'info', handle:e => handleDetail(e)},
@@ -32,6 +39,15 @@ const user = props => {
 
     const handleDetail = e => {
         console.log(e);
+    }
+
+    const filterName = e => {
+        // console.log(e);
+        setAddFilter({...addFilter, name: e.label});
+    }
+
+    const filterAddress = e => {
+        setAddFilter({...addFilter, address: e.label});
     }
 
     return(
@@ -47,7 +63,11 @@ const user = props => {
                     </Breadcrumb> */}
                 </Col>
             </Row>
-            <FilterUser />
+            <FilterUser 
+                data={data}
+                filterName={filterName}
+                filterAddress={filterAddress}
+            />
             <Content>
                 <div className="site-layout-background" >
                     <Datatable
@@ -56,6 +76,7 @@ const user = props => {
                         // usePopup
                         columns={columns} 
                         nameRoute={nameRoute}
+                        addFilter={addFilter}
                         addActions={addActions}
                     />
                 </div>

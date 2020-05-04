@@ -25,7 +25,7 @@ const useDatatable = props => {
     
     let allEffect   = [
         state.remove, state.search, state.pagination.pageSize, 
-        state.pagination.current,
+        state.pagination.current, props.addFilter,
     ];
 
     useEffect(() => {
@@ -203,10 +203,12 @@ const useDatatable = props => {
     }
 
     const fetchData = async () => {
+
         let params = {
             search: state.search,
             page: state.pagination.current,
             per_page: state.pagination.pageSize,
+            ...props.addFilter,
         }
 
         dispatch({type: 'LOADING'});

@@ -74,8 +74,13 @@ const CustomSelect = props => {
                 placeholder={`Pilih ${props.label}`}
                 onSearch={(input, option) => handleSearch(input, option)}
             >
-                {data.map(item => 
-                    <Option key={item.key} >{item.label}</Option>    
+                {data.map((item, index) => 
+                    <Option
+                        key={index}
+                        value={item[props.setKey ? props.setKey : 'id']} 
+                    >
+                        {item[props.setText ? props.setText : 'name']}
+                    </Option>    
                 )}
             </Select>
         </div>

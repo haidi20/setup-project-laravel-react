@@ -37,14 +37,17 @@ class UsersController extends Controller
      */
     public function index()
     {
-        $data = User::sorted()->search()->paginate(request('per_page', 25));
+        $data = User::sorted()
+                    ->search()
+                    ->filter()
+                    ->paginate(request('per_page', 25));
 
         return response()->json($data, 200);
     }
 
-    public function search()
+    public function show()
     {
-        $data = user::search()->limit(5)->get();
+        $data = user::sorted()->search()->limit(5)->get();
 
         return response()->json($data, 200);
     }

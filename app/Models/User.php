@@ -10,7 +10,7 @@ class User extends Authenticatable
 {
     use Notifiable;
 
-    protected $appends = ['key', 'label', 'value'];
+    protected $appends = ['key'];
 
     /**
      * The attributes that are mass assignable.
@@ -42,22 +42,19 @@ class User extends Authenticatable
         }
     }
 
+    public function scopeFilter($query)
+    {
+        foreach($this->searchAbleColumn() as $item){
+            $query->where($item, 'like', '%'.request($item).'%');
+        }
+    }
+
     public function scopeSorted($query, $by = 'created_at', $sort = 'desc')
     {
         return $query->orderBy($by, $sort);
     }
 
     public function getKeyAttribute()
-    {
-        return $this->id;
-    }
-
-    public function getLabelAttribute()
-    {
-        return $this->name;
-    }
-
-    public function getValueAttribute()
     {
         return $this->id;
     }
