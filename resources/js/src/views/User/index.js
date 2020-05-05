@@ -21,7 +21,7 @@ const { Content }   = Layout;
 
 const user = props => {
     const nameRoute = '/user';
-    const initialFilter = {name: null, address: null};
+    const initialFilter = {id: null, address: null};
     const [addFilter, setAddFilter] = useState(initialFilter);
     const data = [
         {label: 'Nata', value: 0},
@@ -46,7 +46,7 @@ const user = props => {
 
     const handleAddFilter = (e, name) => {
         // console.log(e);
-        setAddFilter({...addFilter, [name]: e.label});
+        setAddFilter({...addFilter, [name]: e.value});
     }
 
     return(

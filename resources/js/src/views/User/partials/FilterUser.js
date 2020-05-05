@@ -27,28 +27,30 @@ const filterUser = props => {
                 </Col>
                 <Col span="6">
                     <Select 
-                        setKey='id'
-                        setText='name'
+                        valueOption='id'
+                        textOption='name'
 
+                        nullable
                         name="name"
+                        label="Nama"
                         url="/user/show"
-                        label="Nama User"
                         style={{paddingRight: 5}}
-                        value={props.addFilter.name}
-                        onChange={ e => props.handleAddFilter(e, 'name')}
+                        value={props.addFilter.id}
+                        onChange={ e => props.handleAddFilter(e, 'id')}
                     />
                 </Col>
                 <Col span="6">
-                    <Select 
-                        setKey="id"
-                        setText="address"
-
+                    {/* <Select 
+                        valueOption="id"
+                        textOption="address"
+                        
+                        nullable
                         name="address"
                         label="Alamat"
                         url="/user/show"
                         value={props.addFilter.address}
-                        onChange={ e => props.handleAddFilter(e, 'address')}
-                    />
+                        onChange={ e => props.handleAddFilter(e, 'id')}
+                    /> */}
                 </Col>
             </Row>
         </Collapse>

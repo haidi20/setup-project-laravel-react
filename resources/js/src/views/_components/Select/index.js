@@ -14,9 +14,10 @@ const CustomSelect = props => {
     let typingTimer                 = null;
     const [data, setData]           = useState([]);
     const [search, setSearch]       = useState();
+    const [allItem, setAllItem]     = useState(false);
     const [loading, setLoading]     = useState(false);
 
-    const notFoundContent = loading ? <Spin size="small" /> : 'Data Tidak Ada';
+    const notFoundContent   = loading ? <Spin size="small" /> : 'Data Tidak Ada';
 
     useEffect(() => {
         if(props.data) setData(props.data);
@@ -34,8 +35,32 @@ const CustomSelect = props => {
     const handleOnChange = e => {
         setSearch(null);
 
+        if(Array.isArray(e.label)){
+            setAllItem(true);
+            e.label = e.label.join().replace(',', '');
+        }
+
+        // setAllItem(false);
+
         return props.onChange(e);
     }
+
+    const anotherOption = () => {
+        if(props.nullable){
+            return <Option key={0} value={null}>Tidak Pilih</Option>
+        }else if(!props.required){
+            return <Option key={0} value={null}>Semua {props.label}</Option>
+        }
+    }
+
+    const value = () => {
+        // return props.value ? {key: props.value} : undefined;
+        if(props.value || allItem){
+            return {key: props.value};
+        }else{
+            return undefined;
+        }
+    } 
 
     const fetchData = async () => {
         let params = {
@@ -56,8 +81,6 @@ const CustomSelect = props => {
             });
     }
 
-    console.log(props.value);
-
     return(
         <div>
             <label htmlFor={props.name}>
@@ -66,23 +89,25 @@ const CustomSelect = props => {
             <Select 
                 showSearch
                 labelInValue
+                value={value()}
                 id={props.name}
+                loading={loading}
                 name={props.name}
-                value={{key: props.value}}
                 optionFilterProp="children"
                 onChange={e => handleOnChange(e)}
                 notFoundContent={notFoundContent}
                 placeholder={`Pilih ${props.label}`}
                 style={{ width: '100%', ...props.style }} 
+                // defaultValue={{key: 0, label: `Pilih ${props.label}`}}
                 onSearch={(input, option) => handleSearch(input, option)}
             >
-                {/* <Option value="0">Pilih {props.label}</Option> */}
+                {anotherOption()}
                 {data.map((item, index) => 
                     <Option
-                        key={index}
-                        value={item[props.setKey ? props.setKey : 'id']} 
+                        key={index + 1}
+                        value={item[props.valueOption ? props.valueOption : 'id']} 
                     >
-                        {item[props.setText ? props.setText : 'name']}
+                        {item[props.textOption ? props.textOption : 'name']}
                     </Option>    
                 )}
             </Select>

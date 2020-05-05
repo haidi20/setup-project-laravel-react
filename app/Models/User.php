@@ -32,7 +32,7 @@ class User extends Authenticatable
 
     public function searchAbleColumn()
     {
-        return ['name', 'email', 'address'];
+        return ['id', 'name', 'email', 'address'];
     }
 
     public function scopeSearch($query)
