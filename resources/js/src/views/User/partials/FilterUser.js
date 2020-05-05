@@ -5,33 +5,49 @@ import Collapse from '../../_components/Collapse';
 
 import 'antd/lib/row/style/css';
 import 'antd/lib/col/style/css';
-import {Row, Col} from 'antd';
+import 'antd/lib/button/style/css';
+import {Row, Col, Button} from 'antd';
 
 const filterUser = props => {
+
+    // console.log(props.addFilter);
 
     return(
         <Collapse title="Filter Data">
             <Row>
+                <Col span="2">
+                    <div style={{height: 25}} />
+                    <Button 
+                        // size="large"
+                        className="bg-info"
+                        onClick={() => props.handleResetFilter()} 
+                    >
+                        Reset
+                    </Button> 
+                </Col>
                 <Col span="6">
                     <Select 
                         setKey='id'
                         setText='name'
+
                         name="name"
-                        // data={props.data}
                         url="/user/show"
                         label="Nama User"
-                        onChange={props.filterName}
+                        style={{paddingRight: 5}}
+                        value={props.addFilter.name}
+                        onChange={ e => props.handleAddFilter(e, 'name')}
                     />
                 </Col>
                 <Col span="6">
                     <Select 
                         setKey="id"
+                        setText="address"
+
                         name="address"
-                        // data={props.data}
                         label="Alamat"
                         url="/user/show"
-                        setText="address"
-                        onChange={props.filterAddress}
+                        value={props.addFilter.address}
+                        onChange={ e => props.handleAddFilter(e, 'address')}
                     />
                 </Col>
             </Row>

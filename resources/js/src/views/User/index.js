@@ -21,10 +21,8 @@ const { Content }   = Layout;
 
 const user = props => {
     const nameRoute = '/user';
-    const [addFilter, setAddFilter] = useState({
-        name: null,
-        address: null,
-    });
+    const initialFilter = {name: null, address: null};
+    const [addFilter, setAddFilter] = useState(initialFilter);
     const data = [
         {label: 'Nata', value: 0},
         {label: 'Risky', value: 1},
@@ -41,13 +39,14 @@ const user = props => {
         console.log(e);
     }
 
-    const filterName = e => {
-        // console.log(e);
-        setAddFilter({...addFilter, name: e.label});
+
+    const handleResetFilter = () => {
+        setAddFilter(initialFilter);
     }
 
-    const filterAddress = e => {
-        setAddFilter({...addFilter, address: e.label});
+    const handleAddFilter = (e, name) => {
+        // console.log(e);
+        setAddFilter({...addFilter, [name]: e.label});
     }
 
     return(
@@ -65,8 +64,9 @@ const user = props => {
             </Row>
             <FilterUser 
                 data={data}
-                filterName={filterName}
-                filterAddress={filterAddress}
+                addFilter={addFilter}
+                handleAddFilter={handleAddFilter}
+                handleResetFilter={handleResetFilter}
             />
             <Content>
                 <div className="site-layout-background" >

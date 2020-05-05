@@ -66,13 +66,6 @@ const datatable = props => {
                 </Col>
             </Row>
             <hr />
-            {/* <Row>
-                <Col span="24">
-                    <h1 style={{fontSize: 25}}>Data</h1>
-                    <hr />
-                </Col>
-            </Row>
-            <br /> */}
             <Row type="flex">
                 <Col xs={24} sm={24} md={6}>
                     Show &nbsp;

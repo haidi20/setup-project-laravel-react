@@ -56,6 +56,8 @@ const CustomSelect = props => {
             });
     }
 
+    console.log(props.value);
+
     return(
         <div>
             <label htmlFor={props.name}>
@@ -66,14 +68,15 @@ const CustomSelect = props => {
                 labelInValue
                 id={props.name}
                 name={props.name}
-                // value={search}
-                style={{ width: '100%' }} 
+                value={{key: props.value}}
                 optionFilterProp="children"
                 onChange={e => handleOnChange(e)}
                 notFoundContent={notFoundContent}
                 placeholder={`Pilih ${props.label}`}
+                style={{ width: '100%', ...props.style }} 
                 onSearch={(input, option) => handleSearch(input, option)}
             >
+                {/* <Option value="0">Pilih {props.label}</Option> */}
                 {data.map((item, index) => 
                     <Option
                         key={index}
