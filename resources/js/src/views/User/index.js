@@ -73,7 +73,7 @@ const user = props => {
                     <Datatable
                         title="User"
 
-                        // usePopup
+                        usePopup
                         columns={columns} 
                         nameRoute={nameRoute}
                         addFilter={addFilter}

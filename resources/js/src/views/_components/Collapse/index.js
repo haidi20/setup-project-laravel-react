@@ -12,7 +12,7 @@ const { Panel }     = Collapse;
 const { Content }   = Layout;
 
 const boxCollapse = props => {
-    const [activeKey, setActiveKey] = useState(1);
+    const [activeKey, setActiveKey] = useState(0);
 
     const handleActiveKey = () => {
         console.log('click');

@@ -15,7 +15,7 @@ const filterUser = props => {
     return(
         <Collapse title="Filter Data">
             <Row>
-                <Col span="2">
+                {/* <Col span="2">
                     <div style={{height: 25}} />
                     <Button 
                         // size="large"
@@ -24,13 +24,12 @@ const filterUser = props => {
                     >
                         Reset
                     </Button> 
-                </Col>
+                </Col> */}
                 <Col span="6">
                     <Select 
                         valueOption='id'
                         textOption='name'
 
-                        nullable
                         name="name"
                         label="Nama"
                         url="/user/show"
@@ -39,8 +38,8 @@ const filterUser = props => {
                         onChange={ e => props.handleAddFilter(e, 'id')}
                     />
                 </Col>
-                <Col span="6">
-                    {/* <Select 
+                {/* <Col span="6">
+                    <Select 
                         valueOption="id"
                         textOption="address"
                         
@@ -50,8 +49,8 @@ const filterUser = props => {
                         url="/user/show"
                         value={props.addFilter.address}
                         onChange={ e => props.handleAddFilter(e, 'id')}
-                    /> */}
-                </Col>
+                    />
+                </Col> */}
             </Row>
         </Collapse>
     )

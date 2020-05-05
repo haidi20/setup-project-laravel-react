@@ -118,9 +118,18 @@ const CustomSelect = props => {
 export default CustomSelect;
 
 {/* <Select 
-    required
+    // fot set option
+    valueOption='id'
+    textOption='name'
+
+    nullable
     name="name"
+    label="Nama"
+    url="/user/show"
+    style={{paddingRight: 5}}
+    value={props.addFilter.id}
+    onChange={e => props.handleAddFilter(e, 'id')}
+    required
     data={data} // if data static
-    label="Nama User"
     url="/user/search" // if data from API
 /> */}
