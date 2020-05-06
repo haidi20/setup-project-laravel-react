@@ -11,7 +11,7 @@ const initialState = {
     search: null,
     remove: false,
     loading: false,
-    selecetItem: {},
+    selectItem: {},
     openPopup: false,
 }
 
@@ -30,7 +30,7 @@ const reducer = (state = initialState, action) => {
             return {...state, loading: false};
         }
         case 'SELECT_ITEM': {
-            return {...state, selecetItem: action.payload};
+            return {...state, selectItem: action.payload};
         }
         case 'SEARCH': {
             return {

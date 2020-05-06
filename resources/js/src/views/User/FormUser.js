@@ -19,6 +19,12 @@ const { Content }   = Layout;
 const user = props => {
     const nameRoute = '/user';
 
+    useEffect(() => {
+        if(props.location != undefined){
+            console.log(props.location);
+        }
+    }, [])
+
     return(
         <div>
             <Row className="header-content">

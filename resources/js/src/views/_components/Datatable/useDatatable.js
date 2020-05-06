@@ -20,12 +20,13 @@ const useDatatable = props => {
     const dispatch  = useDispatch();
     const location  = useLocation();
 
+    let addFilter                   = props.addFilter ? props.addFilter : {};
     let typingTimer                 = null;
     const [columns, setColumns]     = useState([]);
     
     let allEffect   = [
         state.remove, state.search, state.pagination.pageSize, 
-        state.pagination.current, props.addFilter,
+        state.pagination.current,
     ];
 
     useEffect(() => {
@@ -119,7 +120,13 @@ const useDatatable = props => {
                 </Button>
             )
         }else{
-            let size = props.usePopup ? 'large' : 'small';
+            let data = record;
+            let size = 'small';
+
+            if(props.usePopup){
+                data = state.selectItem;
+                size = 'large';
+            }
 
             return actions.filter(item => !item.hide).map((item, index) => {
                 const attributes = {
@@ -129,7 +136,7 @@ const useDatatable = props => {
                     style:{margin: '1px'},
                     disabled:item.disabled,
                     className:`bg-${item.color}`,
-                    onClick:() => item.handle(record),
+                    onClick:() => item.handle(data), // how can addAction get data
                 }
 
                 return <Button {...attributes} block={props.usePopup}>{item.title}</Button>
@@ -208,7 +215,7 @@ const useDatatable = props => {
             search: state.search,
             page: state.pagination.current,
             per_page: state.pagination.pageSize,
-            ...props.addFilter,
+            // ...addFilter,
         }
 
         dispatch({type: 'LOADING'});

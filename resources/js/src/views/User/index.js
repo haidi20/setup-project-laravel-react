@@ -1,5 +1,6 @@
 import React, {useEffect, useState} from 'react';
 import Datatable from '../_components/Datatable';
+import {useDispatch} from 'react-redux';
 
 import './styles.scss';
 
@@ -20,6 +21,8 @@ import {
 const { Content }   = Layout;
 
 const user = props => {
+    const dispatch  = useDispatch();
+
     const nameRoute = '/user';
     const initialFilter = {id: null, address: null};
     const [addFilter, setAddFilter] = useState(initialFilter);
@@ -37,6 +40,7 @@ const user = props => {
 
     const handleDetail = e => {
         console.log(e);
+        dispatch({type: 'CLOSE_POPUP'});
     }
 
 
