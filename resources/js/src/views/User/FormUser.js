@@ -39,6 +39,7 @@ const formUser = props => {
     }, [])
 
     const attributeForm = {
+        back: '/user',
         state: state,
         rules: rules,
         onSubmit:e => onSubmit(e),
@@ -67,12 +68,9 @@ const formUser = props => {
                         <div className="site-layout-background" >
                             <Form {...attributeForm} >
                                 <Input name="name" label="Nama" />
-                                <Input type="password" name="password" label="password" />   
+                                <Input type="password" name="password" label="Password" />   
                                 <InputNumber name="age" label="Umur" />
                                 <Input name="email" label="Email" />
-                                {/* <Button type="success">
-                                    Submit
-                                </Button> */}
                             </Form>
                         </div>
                     </Content>

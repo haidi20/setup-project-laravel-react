@@ -1,0 +1,115 @@
+// @import 'button';
+
+$mainColor: #404E67 !important;
+
+// start header
+.logo {
+    height: 32px;
+    margin: 16px;
+    background: $mainColor;
+
+    span{
+        color: #fff;
+        font-size: 15px;
+    }
+} 
+
+section.site-layout {
+    header.site-layout-background {
+        background: #fff;
+        height: 40px !important;
+        padding: 0px !important;
+        line-height: 40px !important;
+    }
+}
+// end header
+.trigger {
+    font-size: 18px;
+    padding: 0 24px;
+    cursor: pointer;
+    line-height: 64px;
+    transition: color 0.3s;
+}
+.trigger:hover {
+    color: #1890ff;
+}
+
+// start custom style menu mobile
+.ant-drawer-header {
+    color: #fff;
+    background: $mainColor;
+    border-bottom: 1px solid $mainColor;
+
+    .ant-drawer-title {
+        color: #fff;
+    }
+}
+.ant-drawer-body {
+    padding: 0px !important;
+    background: $mainColor;
+}
+//end custom style menu mobile
+
+
+// start color menu
+.ant-layout-sider-children {
+    background: $mainColor;
+}
+.ant-menu-dark {
+    background: $mainColor;
+}
+.ant-menu-item-only-child {
+    background: $mainColor;
+    border-color: $mainColor;
+}
+.ant-menu-dark .ant-menu-inline.ant-menu-sub {
+    background: $mainColor;
+}
+.ant-menu.ant-menu-dark, .ant-menu-dark .ant-menu-sub {
+    background: $mainColor;
+}
+.ant-menu-dark.ant-menu-dark:not(.ant-menu-horizontal) .ant-menu-item-selected  {
+    background-color: #1890ff !important;
+}
+.ant-layout-sider-trigger {
+    background: $mainColor;
+}
+.ant-layout-sider-zero-width-trigger-left {
+    display:none;
+}
+.ant-menu-item.ant-menu-item-selected {
+    span{
+        a{
+            color: #fff;
+        }
+    }
+}
+.ant-menu-item {
+    span{
+        a{
+            color: rgba(255, 255, 255, 0.65);
+        }
+    }
+}
+// end color menu
+
+// start body
+.header-content {
+    margin: 5px 17px;
+
+    .title-content {
+        font-size: 25px;
+        margin-bottom: 0px;
+    }
+}
+// <Content />
+main.ant-layout-content{
+    margin: 10px 15px;
+
+    .site-layout-background {
+        padding: 10px; 
+        min-height: 360px;
+        background: #fff;
+    }
+}
+// end body

@@ -1,10 +1,4 @@
-$info: #17c0eb;
-$warning: #ff9f1a;
-$success: #3ae374;
-
-$info-second: #18dcff;
-$warning-second: #ffaf40;
-$success-second: #32ff7e;
+@import '../../_layouts/styles/button';
 
 hr{
     height: 1px;
@@ -19,42 +13,6 @@ hr{
 
 .ant-table-pagination {
     display: none;
-}
-
-.bg-warning {
-    color: #fff;
-    border-color: $warning;
-    background-color: $warning;
-    
-    &:hover, &:focus{
-        color: #fff;
-        border-color: $warning-second;
-        background-color: $warning-second;
-    }
-}
-
-.bg-success {
-    color: #fff;
-    border-color: $success;
-    background-color: $success;
-    
-    &:hover, &:focus{
-        color: #fff;
-        border-color: $success-second;
-        background-color: $success-second;
-    }
-}
-
-.bg-info {
-    color: #fff;
-    border-color: $info;
-    background-color: $info;
-    
-    &:hover, &:focus{
-        color: #fff;
-        border-color: $info-second;
-        background-color: $info-second;
-    }
 }
 
 @media only screen and (max-width: 600px) {

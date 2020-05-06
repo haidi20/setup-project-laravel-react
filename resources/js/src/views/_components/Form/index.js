@@ -1,5 +1,7 @@
 import React, {useEffect, useState} from 'react';
+import {useHistory} from "react-router-dom";
 
+import './style.scss';
 import 'antd/lib/form/style/css';
 import 'antd/lib/input/style/css';
 import 'antd/lib/button/style/css';
@@ -26,9 +28,9 @@ const tailLayout = {
 };
 
 const customForm = props => {
+    const history   = useHistory();
 
-    const rules         = props.rules ? props.rules : null;
-    const setMessage    = props.message ? props.message : validateMessages;
+    const rules = props.rules ? props.rules : null;
 
     const validateMessages = {
         required: 'Maaf, ${label} harus diisi.',
@@ -46,7 +48,7 @@ const customForm = props => {
         size:'middle',
         layout:'vertical',
         initialValues:props.state,
-        validateMessages: setMessage,
+        validateMessages: validateMessages,
         onFinish:e => props.onSubmit(e),
         onFinishFailed:e => props.onSubmit(e),
     }
@@ -86,8 +88,16 @@ const customForm = props => {
         setRules(result);  
     }
 
+    const back = () => {
+        history.push({
+            pathname: props.back,
+        });
+    }
+
     return(
         <div>
+            <Button className="bg-info" onClick={() => back()}> Back </Button> 
+            <br /> <br />
             <Form {...attributeForm}>
                 {React.Children.map(props.children, (child, index) => {
                     let attributes  = child.props;
@@ -102,9 +112,8 @@ const customForm = props => {
                         </Form.Item>
                     )
                 })}
-                <Button type="success" htmlType="submit">
-                    Submit
-                </Button>
+                <Button className="bg-info" onClick={() => back()}> Back </Button>
+                <Button className="bg-success" style={{float: 'right'}} htmlType="submit"> Submit </Button>
             </Form>
             
         </div>
