@@ -1,14 +1,22 @@
 import React, {useEffect, useState} from 'react';
 import { withRouter } from "react-router-dom";
 
-import './styles.scss';
+// components
+import Form from '../_components/Form';
+//partials
+import rules from './partials/Rules';
 
+import './styles.scss';
 import 'antd/lib/row/style/css';
 import 'antd/lib/col/style/css';
+import 'antd/lib/input/style/css';
+import 'antd/lib/button/style/css';
 import 'antd/lib/layout/style/css';
 import 'antd/lib/breadcrumb/style/css';
+import 'antd/lib/input-number/style/css';
 import { 
     Row, Col, Layout, Breadcrumb,
+    Input, Button, InputNumber,
 } from 'antd';
 import {
     BarsOutlined
@@ -16,14 +24,29 @@ import {
 
 const { Content }   = Layout;
 
-const user = props => {
-    const nameRoute = '/user';
+const formUser = props => {
+    const [state, setState] = useState({
+        name: null,
+        email: null,
+        address: null,
+        password: null,
+    });
 
     useEffect(() => {
         if(props.location != undefined){
-            console.log(props.location);
+            // console.log(props.location);
         }
     }, [])
+
+    const attributeForm = {
+        state: state,
+        rules: rules,
+        onSubmit:e => onSubmit(e),
+    }
+
+    const onSubmit = e => {
+        console.log(e);
+    }
 
     return(
         <div>
@@ -42,7 +65,12 @@ const user = props => {
                 <Col span={12}>
                     <Content>
                         <div className="site-layout-background" >
-                            form
+                            <Form {...attributeForm} >
+                                <Input name="name" label="Nama" userequired="true" />
+                                <Input type="password" name="password" label="Password" userequired="true" />   
+                                <InputNumber name="age" label="Umur" userequired="true" number="true" />
+                                <Input name="email" label="Email" userequired="true" email="true" />
+                            </Form>
                         </div>
                     </Content>
                 </Col>
@@ -52,4 +80,4 @@ const user = props => {
     )
 }
 
-export default withRouter(user);
+export default withRouter(formUser);

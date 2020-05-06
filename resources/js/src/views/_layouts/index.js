@@ -1,5 +1,5 @@
 import React , {useState} from 'react';
-import './styles.scss'; // global syle
+import './styles.scss'; // global style
 
 // partials
 import ViewMenu from './partials/ViewMenu';
