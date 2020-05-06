@@ -20,9 +20,13 @@ const useDatatable = props => {
     const dispatch  = useDispatch();
     const location  = useLocation();
 
-    let addFilter                   = props.addFilter ? props.addFilter : {};
     let typingTimer                 = null;
     const [columns, setColumns]     = useState([]);
+
+    let addFilter       = props.addFilter ? props.addFilter : {}; // how use in below
+    let addAction       = props.addAction ? props.addAction : [];
+    let nameRoute       = props.nameRoute ? props.nameRoute : '/';
+    let propsColumns    = props.columns   ? props.columns : []; // columns from menu e.g. menu user
     
     let allEffect   = [
         state.remove, state.search, state.pagination.pageSize, 
@@ -51,7 +55,6 @@ const useDatatable = props => {
     }
 
     const insertColumns = () => {
-        let propsColumns = props.columns;
 
         propsColumns = [
             { 
@@ -66,7 +69,7 @@ const useDatatable = props => {
             let width = 8 ;
 
             if(!props.usePopup){
-                width += (3 * props.addActions.length);
+                width += (3 * addAction.length);
             }
 
             propsColumns = [
@@ -107,7 +110,7 @@ const useDatatable = props => {
 
         actions = [
             ...actions,
-            ...props.addActions,
+            ...addAction,
         ];
 
         if(usePopup){
@@ -151,13 +154,13 @@ const useDatatable = props => {
 
     const handleAdd = () => {
         history.push({
-            pathname: props.nameRoute+"/form",
+            pathname: nameRoute+"/form",
         });
     }
 
     const handleEdit = data => {
         history.push({
-            pathname: props.nameRoute+"/form",
+            pathname: nameRoute+"/form",
             state: data,
         });
 
@@ -177,7 +180,7 @@ const useDatatable = props => {
             .then((result) => {
                 if(result.value){
                     dispatch({type: 'LOADING'});
-                    axios.post(props.nameRoute+"/delete/"+data.id)
+                    axios.post(nameRoute+"/delete/"+data.id)
                         .then(response => {
                             alert(response);
 
@@ -215,11 +218,11 @@ const useDatatable = props => {
             search: state.search,
             page: state.pagination.current,
             per_page: state.pagination.pageSize,
-            // ...addFilter,
+            ...addFilter,
         }
 
         dispatch({type: 'LOADING'});
-        await axios.get(props.nameRoute, {params: params})
+        await axios.get(nameRoute, {params: params})
             .then(response => {
                 let data = response.data;
                 
@@ -246,3 +249,13 @@ const useDatatable = props => {
 }
 
 export default useDatatable;
+
+/*
+const addFilter = {id: null, address: null};
+const addAction = [
+    {title: <BarsOutlined />, color: 'info', handle:e => handleDetail(e)},
+];
+const columns = [
+    {title: 'Name', dataIndex: 'name', key: 'name'},
+];
+*/

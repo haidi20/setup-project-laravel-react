@@ -34,7 +34,7 @@ const user = props => {
     const columns = [
         {title: 'Name', dataIndex: 'name', key: 'name'},
     ];
-    const addActions = [
+    const addAction = [
         {title: <BarsOutlined />, color: 'info', handle:e => handleDetail(e)},
     ];
 
@@ -75,13 +75,11 @@ const user = props => {
             <Content>
                 <div className="site-layout-background" >
                     <Datatable
-                        title="User"
-
                         usePopup
                         columns={columns} 
                         nameRoute={nameRoute}
                         addFilter={addFilter}
-                        addActions={addActions}
+                        addAction={addAction}
                     />
                 </div>
             </Content>
