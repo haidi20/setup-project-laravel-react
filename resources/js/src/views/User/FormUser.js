@@ -66,16 +66,18 @@ const formUser = props => {
                     <Content>
                         <div className="site-layout-background" >
                             <Form {...attributeForm} >
-                                <Input name="name" label="Nama" userequired="true" />
-                                <Input type="password" name="password" label="Password" userequired="true" />   
-                                <InputNumber name="age" label="Umur" userequired="true" number="true" />
-                                <Input name="email" label="Email" userequired="true" email="true" />
+                                <Input name="name" label="Nama" />
+                                <Input type="password" name="password" label="password" />   
+                                <InputNumber name="age" label="Umur" />
+                                <Input name="email" label="Email" />
+                                {/* <Button type="success">
+                                    Submit
+                                </Button> */}
                             </Form>
                         </div>
                     </Content>
                 </Col>
             </Row>
-            
         </div>
     )
 }

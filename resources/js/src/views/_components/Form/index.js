@@ -86,38 +86,25 @@ const customForm = props => {
         setRules(result);  
     }
 
-    // const rules = {
-    //     name: [
-    //         { required: true },  
-    //         { type:'number' },  
-    //     ],
-    // }
-
-    const allInput = () => (
-        React.Children.map(props.children, (child, index) => {
-            let attributes  = child.props;
-            let name        = attributes.name;
-            // console.log(attributes);
-            return(
-                <Form.Item
-                    {...attributes}
-                    rules={rules[name]}
-                >
-                    {child}
-                </Form.Item>
-            )
-        })
-    )
-
     return(
         <div>
             <Form {...attributeForm}>
-                {allInput()}
-                <Form.Item >
-                    <Button type="success" htmlType="submit">
-                        Submit
-                    </Button>
-                </Form.Item>
+                {React.Children.map(props.children, (child, index) => {
+                    let attributes  = child.props;
+                    let name        = attributes.name;
+                    // console.log(attributes);
+                    return(
+                        <Form.Item
+                            {...attributes}
+                            rules={rules[name]}
+                        >
+                            {child}
+                        </Form.Item>
+                    )
+                })}
+                <Button type="success" htmlType="submit">
+                    Submit
+                </Button>
             </Form>
             
         </div>
