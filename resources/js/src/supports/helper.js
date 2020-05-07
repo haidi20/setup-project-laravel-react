@@ -3,17 +3,32 @@ import React from 'react';
 // third party
 import Swal from 'sweetalert2';
 
-export const alert = (result, type) => {
+export const handleError = error => {
+  let response = error.response;
+
+  if(Number(response.status) >= 500 && Number(response.status) <= 599){
+    let message = {
+      data: 'Maaf, Ada Kesalahan Sistem',
+      status: 500,
+    }
+
+    alert(message);
+  }else{
+    alert(response);
+  }
+}
+
+export const alert = (response, type) => {
   let icon = '', title = '';
 
-  if(Number(result.status) >= 200 && Number(result.status) <= 299){
+  if(Number(response.status) >= 200 && Number(response.status) <= 299){
       icon    = 'success';
       title   = 'Notification';
-  }else if(Number(result.status) >= 400 && Number(result.status) <= 499){
+  }else if(Number(response.status) >= 400 && Number(response.status) <= 499){
       icon    = 'warning';
       title   = 'Attention';
   }
-  else if(Number(result.status) >= 500 && Number(result.status) <= 599){
+  else if(Number(response.status) >= 500 && Number(response.status) <= 599){
       icon    = 'error';
       title   = 'Warning';
   }   
@@ -23,7 +38,7 @@ export const alert = (result, type) => {
           icon: icon,
           timer: 2000,
           title: title,
-          text: result.data,
+          text: response.data,
           showConfirmButton: false,
       });
   }else{
@@ -41,11 +56,11 @@ export const alert = (result, type) => {
 
       Toast.fire({
           icon: icon,
-          title: result.data,
+          title: response.data,
       });
   }
 
-  return result.status;
+  return response.status;
 }
 
 export const addClass = (elements, myClass) => {

@@ -58,7 +58,7 @@ const datatable = props => {
                 <Col span="4">
                     <Button 
                         size="large"
-                        className="bg-success"
+                        className="btn-success"
                         onClick={() => handleAdd()} 
                     >
                         Tambah

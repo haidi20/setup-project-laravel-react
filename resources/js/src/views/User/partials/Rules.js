@@ -7,6 +7,7 @@ const rules = {
     password: [required],
     age: [required, number],
     email: [required, email],
+    address: [required],
 }
 
 export default rules;

@@ -96,8 +96,9 @@ const customForm = props => {
 
     return(
         <div>
-            <Button className="bg-info" onClick={() => back()}> Back </Button> 
-            <br /> <br />
+            <Button 
+                className="btn-info" onClick={() => back()} style={{marginBottom: 20}}
+            > Kembali </Button>
             <Form {...attributeForm}>
                 {React.Children.map(props.children, (child, index) => {
                     let attributes  = child.props;
@@ -112,8 +113,10 @@ const customForm = props => {
                         </Form.Item>
                     )
                 })}
-                <Button className="bg-info" onClick={() => back()}> Back </Button>
-                <Button className="bg-success" style={{float: 'right'}} htmlType="submit"> Submit </Button>
+                <div style={{marginTop: 20}}>
+                    <Button className="btn-info" onClick={() => back()}> Kembali </Button>
+                    <Button className="btn-success" style={{float: 'right'}} htmlType="submit"> Kirim </Button>
+                </div>
             </Form>
             
         </div>

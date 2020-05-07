@@ -1,6 +1,9 @@
 import React, {useEffect, useState} from 'react';
-import { withRouter } from "react-router-dom";
+import {withRouter, useHistory} from "react-router-dom";
 
+// support
+import axios from '../../supports/axios';
+import {alert, handleError} from '../../supports/helper';
 // components
 import Form from '../_components/Form';
 //partials
@@ -25,6 +28,7 @@ import {
 const { Content }   = Layout;
 
 const formUser = props => {
+    const history   = useHistory();
     const [state, setState] = useState({
         name: null,
         email: null,
@@ -46,7 +50,19 @@ const formUser = props => {
     }
 
     const onSubmit = e => {
-        console.log(e);
+        if(e.outOfDate === false) return false;
+
+        axios({
+            method: 'post',
+            url: '/user/store',
+            data: e,
+        }).then(response => {
+            alert(response);
+            history.push('/user');
+        }).catch(function (error) {
+            console.log(error.response);
+            handleError(error);
+        });
     }
 
     return(
@@ -71,6 +87,7 @@ const formUser = props => {
                                 <Input type="password" name="password" label="Password" />   
                                 <InputNumber name="age" label="Umur" />
                                 <Input name="email" label="Email" />
+                                <Input name="address" label="Alamat" />
                             </Form>
                         </div>
                     </Content>

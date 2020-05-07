@@ -20,9 +20,8 @@ use Illuminate\Http\Request;
 Route::group(['prefix' => 'user', 'name' => 'user.'], function(){
     Route::get('/', 'UsersController@index')->name('index');
     Route::get('/show', 'UsersController@show')->name('show');
-    Route::get('/find/{id}', 'DocumentsController@find')->name('find');
-    // Route::get('/edit/{id}', 'DocumentsController@edit')->name('edit');
-    // Route::post('/store', 'DocumentsController@store')->name('store');
+    Route::get('/find/{id}', 'UsersController@find')->name('find');
+    Route::post('/store', 'UsersController@store')->name('store');
     // Route::post('/update/{id}', 'DocumentsController@update')->name('update');
     Route::post('/delete/{id}', 'UsersController@destroy')->name('delete');
 

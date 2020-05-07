@@ -61,7 +61,21 @@ class UsersController extends Controller
 
     public function store()
     {
+        $checkEmail = $this->checkEmail();
+        if($checkEmail) return response()->json('Maaf, Email Sudah Ada', 400);
 
+        try {
+            $data           = New User();
+            $data->name     = request('name');
+            $data->email    = request('email');
+            $data->address  = request('address');
+            $data->password = bcrypt(request('password'));
+            $data->save();
+        } catch (\Execption $e) {
+            return response()->json('Maaf, Data Tidak Berhasil Terkirim', 500);
+        }
+
+        return response()->json('Data Berhasil Terkirim', 200);
     }
 
     public function update($id)
@@ -79,5 +93,14 @@ class UsersController extends Controller
         }
 
         return response()->json('Data Berhasil Dihapus', 200);
+    }
+
+    private function checkEmail()
+    {
+        $checkEmail = User::where('email', request('email'))->first();
+
+        if($checkEmail) return true;
+
+        return false;
     }
 }

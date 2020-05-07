@@ -1,6 +1,13 @@
-// @import 'button';
-
 $mainColor: #404E67 !important;
+
+$white: #fff !important;
+$info: #17c0eb !important;
+$warning: #ff9f1a !important;
+$success: #3ae374 !important;
+
+$info-second: #18dcff !important;
+$warning-second: #ffaf40 !important;
+$success-second: #32ff7e !important;
 
 // start header
 .logo {
@@ -9,14 +16,14 @@ $mainColor: #404E67 !important;
     background: $mainColor;
 
     span{
-        color: #fff;
+        color: $white;
         font-size: 15px;
     }
 } 
 
 section.site-layout {
     header.site-layout-background {
-        background: #fff;
+        background: $white;
         height: 40px !important;
         padding: 0px !important;
         line-height: 40px !important;
@@ -36,12 +43,12 @@ section.site-layout {
 
 // start custom style menu mobile
 .ant-drawer-header {
-    color: #fff;
+    color: $white;
     background: $mainColor;
     border-bottom: 1px solid $mainColor;
 
     .ant-drawer-title {
-        color: #fff;
+        color: $white;
     }
 }
 .ant-drawer-body {
@@ -80,7 +87,7 @@ section.site-layout {
 .ant-menu-item.ant-menu-item-selected {
     span{
         a{
-            color: #fff;
+            color: $white;
         }
     }
 }
@@ -109,7 +116,53 @@ main.ant-layout-content{
     .site-layout-background {
         padding: 10px; 
         min-height: 360px;
-        background: #fff;
+        background: $white;
+
+        // <Form />
+        .ant-form{
+            .ant-form-item{
+                margin-bottom: 15px;
+            }
+        }
     }
 }
+
 // end body
+
+// start custom buttons
+.btn-warning {
+    color: $white;
+    border-color: $warning;
+    background-color: $warning;
+    
+    &:hover, &:focus{
+        color: $white;
+        border-color: $warning-second;
+        background-color: $warning-second;
+    }
+}
+
+.btn-success {
+    color: $white;
+    border-color: $success;
+    background-color: $success;
+    
+    &:hover, &:focus{
+        color: $white;
+        border-color: $success-second;
+        background-color: $success-second;
+    }
+}
+
+.btn-info {
+    color: $white;
+    border-color: $info;
+    background-color: $info;
+    
+    &:hover, &:focus{
+        color: $white;
+        border-color: $info-second;
+        background-color: $info-second;
+    }
+}
+// end custom buttons

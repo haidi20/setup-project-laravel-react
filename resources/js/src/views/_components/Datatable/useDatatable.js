@@ -138,7 +138,7 @@ const useDatatable = props => {
                     type:item.color,
                     style:{margin: '1px'},
                     disabled:item.disabled,
-                    className:`bg-${item.color}`,
+                    className:`btn-${item.color}`,
                     onClick:() => item.handle(data), // how can addAction get data
                 }
 
