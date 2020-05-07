@@ -5,7 +5,7 @@ const initialState = {
     pagination: {
         total: 1,
         current: 1,
-        pageSize: 5, // jumlah data yg muncul. 5 data yg muncul
+        pageSize: 5, // jumlah data yg muncul. yg muncul 5 data
     },
     reset: true,
     search: null,

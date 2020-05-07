@@ -14,9 +14,9 @@ const dashboard = props => {
 
     return(
         <div>
-            <Row className="header-menu">
+            <Row className="header-content">
                 <Col span="20">
-                    <h1 className="title-menu">Dashboard</h1>
+                    <h1 className="title-content">Dashboard</h1>
                 </Col>
                 <Col span="4">
                     {/* <Breadcrumb style={{ margin: '16px 0' }}>
@@ -26,11 +26,7 @@ const dashboard = props => {
                 </Col>
             </Row>
             <Content>
-                {/* <Breadcrumb style={{ margin: '16px 0' }}> */}
-                    {/* <Breadcrumb.Item>User</Breadcrumb.Item>
-                    <Breadcrumb.Item>Bill</Breadcrumb.Item> */}
-                {/* </Breadcrumb> */}
-                <div className="site-layout-background">
+                <div className="site-layout-background" >
                     {/* content */}
                 </div>
             </Content>

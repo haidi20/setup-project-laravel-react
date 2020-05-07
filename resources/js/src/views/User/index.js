@@ -24,13 +24,8 @@ const user = props => {
     const dispatch  = useDispatch();
 
     const nameRoute = '/user';
-    const initialFilter = {id: null, address: null};
+    const initialFilter = {id: null};
     const [addFilter, setAddFilter] = useState(initialFilter);
-    const data = [
-        {label: 'Nata', value: 0},
-        {label: 'Risky', value: 1},
-        {label: 'Andi', value: 2},
-    ];
     const columns = [
         {title: 'Name', dataIndex: 'name', key: 'name'},
     ];
@@ -43,13 +38,11 @@ const user = props => {
         dispatch({type: 'CLOSE_POPUP'});
     }
 
-
     const handleResetFilter = () => {
         setAddFilter(initialFilter);
     }
 
     const handleAddFilter = (e, name) => {
-        // console.log(e);
         setAddFilter({...addFilter, [name]: e.value});
     }
 
@@ -66,16 +59,9 @@ const user = props => {
                     </Breadcrumb> */}
                 </Col>
             </Row>
-            <FilterUser 
-                data={data}
-                addFilter={addFilter}
-                handleAddFilter={handleAddFilter}
-                handleResetFilter={handleResetFilter}
-            />
             <Content>
                 <div className="site-layout-background" >
                     <Datatable
-                        usePopup
                         columns={columns} 
                         nameRoute={nameRoute}
                         addFilter={addFilter}
