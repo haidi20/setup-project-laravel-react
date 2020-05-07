@@ -28,7 +28,12 @@ const tailLayout = {
 };
 
 const customForm = props => {
+    const [form]    = Form.useForm();
     const history   = useHistory();
+
+    useEffect(() => {
+        form.setFieldsValue({...props.state});
+    }, [props.state]);
 
     const rules = props.rules ? props.rules : null;
 
@@ -44,10 +49,10 @@ const customForm = props => {
     };
 
     const attributeForm = {
+        form: form,
         name:"user",
         size:'middle',
         layout:'vertical',
-        initialValues:props.state,
         validateMessages: validateMessages,
         onFinish:e => props.onSubmit(e),
         onFinishFailed:e => props.onSubmit(e),
@@ -101,12 +106,12 @@ const customForm = props => {
             > Kembali </Button>
             <Form {...attributeForm}>
                 {React.Children.map(props.children, (child, index) => {
-                    let attributes  = child.props;
-                    let name        = attributes.name;
-                    // console.log(attributes);
+                    let attribute  = child.props;
+                    let name        = attribute.name;
+                    // console.log(attribute);
                     return(
                         <Form.Item
-                            {...attributes}
+                            {...attribute}
                             rules={rules[name]}
                         >
                             {child}

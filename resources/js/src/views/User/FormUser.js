@@ -30,16 +30,14 @@ const { Content }   = Layout;
 const formUser = props => {
     const history   = useHistory();
     const [state, setState] = useState({
-        name: null,
+        name: 'mantab',
         email: null,
         address: null,
         password: null,
     });
 
     useEffect(() => {
-        if(props.location != undefined){
-            // console.log(props.location);
-        }
+        insertDataEdit();
     }, [])
 
     const attributeForm = {
@@ -47,6 +45,16 @@ const formUser = props => {
         state: state,
         rules: rules,
         onSubmit:e => onSubmit(e),
+    }
+
+    const insertDataEdit = () => {
+        if(props.location != undefined){
+            let data = props.location.state;
+
+            setState(prev => {
+                return {...prev, ...data}
+            });
+        }
     }
 
     const onSubmit = e => {
@@ -84,7 +92,8 @@ const formUser = props => {
                         <div className="site-layout-background" >
                             <Form {...attributeForm} >
                                 <Input name="name" label="Nama" />
-                                <Input type="password" name="password" label="Password" />   
+                                <Input type="password" name="password" label="Password" />  
+                                <Input type="password" name="rePassword" label="Confirm Passowrd" />   
                                 <InputNumber name="age" label="Umur" />
                                 <Input name="email" label="Email" />
                                 <Input name="address" label="Alamat" />

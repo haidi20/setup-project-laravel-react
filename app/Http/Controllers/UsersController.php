@@ -66,6 +66,7 @@ class UsersController extends Controller
 
         try {
             $data           = New User();
+            $data->age      = request('age');
             $data->name     = request('name');
             $data->email    = request('email');
             $data->address  = request('address');
