@@ -15,7 +15,6 @@ const boxCollapse = props => {
     const [activeKey, setActiveKey] = useState(0);
 
     const handleActiveKey = () => {
-        console.log('click');
         setActiveKey(prev => prev === 0 ? 1 : 0);
     }
 

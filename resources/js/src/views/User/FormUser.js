@@ -125,7 +125,7 @@ const formUser = props => {
                             <Form {...attributeForm} >
                                 <Input name="name" label="Nama" onChange={handleOnChange}/>
                                 <Input type="password" name="password" label="Password" onChange={handleOnChange}/>  
-                                <Input type="password" name="rePassword" label="Confirm Password" onChange={handleOnChange}/>   
+                                <Input type="password" name="rePassword" label="Konfirmasi Password" onChange={handleOnChange}/>   
                                 <InputNumber name="age" label="Umur" onChange={handleOnChange}/>
                                 <Input name="email" label="Email" onChange={handleOnChange}/>
                                 <Input name="address" label="Alamat" onChange={handleOnChange}/>

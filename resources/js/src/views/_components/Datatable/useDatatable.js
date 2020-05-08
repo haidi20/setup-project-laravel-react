@@ -3,7 +3,7 @@ import {useHistory, useLocation} from "react-router-dom";
 import {useSelector, useDispatch} from 'react-redux';
 
 import axios from '../../../supports/axios';
-import {alert} from '../../../supports/helper';
+import {alert, handleError} from '../../../supports/helper';
 
 // third party
 import Swal from 'sweetalert2';
@@ -23,14 +23,14 @@ const useDatatable = props => {
     let typingTimer                 = null;
     const [columns, setColumns]     = useState([]);
 
-    let addFilter       = props.addFilter ? props.addFilter : {}; // how use in below
+    let addFilter       = props.addFilter; // how use in below
     let addAction       = props.addAction ? props.addAction : [];
     let nameRoute       = props.nameRoute ? props.nameRoute : '/';
     let propsColumns    = props.columns   ? props.columns : []; // columns from menu e.g. menu user
     
     let allEffect   = [
         state.remove, state.search, state.pagination.pageSize, 
-        state.pagination.current,
+        state.pagination.current, addFilter,
     ];
 
     useEffect(() => {
@@ -44,14 +44,6 @@ const useDatatable = props => {
 
     const handleClosePopup = () => {
         dispatch({type: 'CLOSE_POPUP'});
-    }
-
-    const handleError = e => {
-        let result = {
-            data: 'Maaf, Ada Kesalahan Sistem',
-            status: e.response.status,
-        }
-        alert(result);
     }
 
     const insertColumns = () => {
@@ -251,7 +243,7 @@ const useDatatable = props => {
 export default useDatatable;
 
 /*
-const addFilter = {id: null, address: null};
+const addFilter = {name: null, address: null};
 const addAction = [
     {title: <BarsOutlined />, color: 'info', handle:e => handleDetail(e)},
 ];

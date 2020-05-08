@@ -55,8 +55,8 @@ const CustomSelect = props => {
 
     const value = () => {
         // return props.value ? {key: props.value} : undefined;
-        if(props.value || allItem){
-            return {key: props.value};
+        if(props.value.value != null || allItem){
+            return props.value;
         }else{
             return undefined;
         }
@@ -64,7 +64,7 @@ const CustomSelect = props => {
 
     const fetchData = async () => {
         let params = {
-            search: search,
+            [props.name]: search,
         }
 
         setLoading(true);

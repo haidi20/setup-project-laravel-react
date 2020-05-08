@@ -25,6 +25,7 @@ const user = props => {
 
     const nameRoute = '/user';
     const initialFilter = {id: null};
+    const [filterUser, setFilterUser] = useState({value: null, label: null});
     const [addFilter, setAddFilter] = useState(initialFilter);
     const columns = [
         {title: 'Name', dataIndex: 'name', key: 'name'},
@@ -43,6 +44,8 @@ const user = props => {
     }
 
     const handleAddFilter = (e, name) => {
+        console.log(e, name);
+        setFilterUser({...e});
         setAddFilter({...addFilter, [name]: e.value});
     }
 
@@ -59,6 +62,11 @@ const user = props => {
                     </Breadcrumb> */}
                 </Col>
             </Row>
+            <FilterUser
+                addFilter={addFilter}
+                filterUser={filterUser} 
+                handleAddFilter={handleAddFilter}
+            />
             <Content>
                 <div className="site-layout-background" >
                     <Datatable

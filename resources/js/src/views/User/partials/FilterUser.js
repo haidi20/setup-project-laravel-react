@@ -10,8 +10,6 @@ import {Row, Col, Button} from 'antd';
 
 const filterUser = props => {
 
-    // console.log(props.addFilter);
-
     return(
         <Collapse title="Filter Data">
             <Row>
@@ -27,15 +25,15 @@ const filterUser = props => {
                 </Col> */}
                 <Col span="6">
                     <Select 
-                        valueOption='id'
+                        valueOption='id' // harus sama dengan addFilter
                         textOption='name'
 
                         name="name"
                         label="Nama"
-                        url="/user/show"
+                        url="/user/search-option"
+                        value={props.filterUser}
                         style={{paddingRight: 5}}
-                        value={props.addFilter.id}
-                        onChange={ e => props.handleAddFilter(e, 'id')}
+                        onChange={ e => props.handleAddFilter(e, 'id')} // harus sama dengan addFilter
                     />
                 </Col>
                 {/* <Col span="6">

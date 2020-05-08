@@ -45,9 +45,9 @@ class UsersController extends Controller
         return response()->json($data, 200);
     }
 
-    public function show()
+    public function searchOption()
     {
-        $data = user::sorted()->search()->limit(5)->get();
+        $data = user::sorted()->filter()->limit(5)->get();
 
         return response()->json($data, 200);
     }
