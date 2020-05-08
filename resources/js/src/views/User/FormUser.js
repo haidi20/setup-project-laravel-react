@@ -30,7 +30,8 @@ const { Content }   = Layout;
 const formUser = props => {
     const history   = useHistory();
     const [state, setState] = useState({
-        name: 'mantab',
+        age: null,
+        name: null,
         email: null,
         address: null,
         password: null,
@@ -82,10 +83,12 @@ const formUser = props => {
     }
 
     const handleOnChange = e => {
-        const { name, value } = e.currentTarget;
-        setState(prev => {
-            return {...prev, [name]: value}
-        });
+        if(e != null && e.currentTarget != null){
+            const { name, value } = e.currentTarget;
+            setState(prev => {
+                return {...prev, [name]: value}
+            });
+        }
     }
 
     const rules = {
