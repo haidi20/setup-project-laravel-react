@@ -19,12 +19,17 @@ use Illuminate\Http\Request;
 
 Route::group(['prefix' => 'user', 'name' => 'user.'], function(){
     Route::get('/', 'UsersController@index')->name('index');
-    Route::get('/search-option', 'UsersController@searchOption')->name('searchOption');
-    Route::get('/find/{id}', 'UsersController@find')->name('find');
     Route::post('/store', 'UsersController@store')->name('store');
-    // Route::post('/update/{id}', 'DocumentsController@update')->name('update');
+    Route::post('/update/{id}', 'UsersController@update')->name('update');
     Route::post('/delete/{id}', 'UsersController@destroy')->name('delete');
 
-    // Route::post('/upload/{id}', 'DocumentsController@upload')->name('upload');
-    // Route::get('/sequence-letter', 'DocumentsController@sequenceLetter')->name('sequenceLetter');
+    Route::get('/find/{id}', 'UsersController@find')->name('find');
+    Route::get('/search-option', 'UsersController@searchOption')->name('searchOption');
+});
+
+Route::group(['prefix' => 'organization', 'name' => 'organization'], function(){
+    Route::get('/', 'OrganizationController@index')->name('index');
+    Route::post('/store', 'OrganizationController@store')->name('store');
+    Route::post('/update/{id}', 'OrganizationController@update')->name('update');
+    Route::post('/delete/{id}', 'OrganizationController@destroy')->name('delete');
 });

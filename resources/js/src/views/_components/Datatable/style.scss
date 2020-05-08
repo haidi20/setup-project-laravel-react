@@ -9,11 +9,12 @@ hr{
     margin-bottom: 8px;
 }
 
-// hide pagination on table and hide show page
+// hide pagination on table 
 .ant-table-pagination{
     display: none;
 }
 
+// hide show page on pagination 
 .ant-pagination-options-size-changer.ant-select{
     display: none !important;
 }

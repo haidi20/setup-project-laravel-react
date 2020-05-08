@@ -32,8 +32,10 @@ import {
 const { Content }   = Layout;
 
 const formUser = props => {
+    const nameRoute = '/user';
     const history   = useHistory();
     const [state, setState] = useState({
+        id: null,
         age: null,
         name: null,
         email: null,
@@ -46,7 +48,7 @@ const formUser = props => {
     }, [])
 
     const insertDataEdit = () => {
-        if(props.location != undefined){
+        if(props.location.state != undefined){
             let data = props.location.state;
 
             setState(prev => {
@@ -55,16 +57,24 @@ const formUser = props => {
         }
     }
 
+    const url = () => {
+        if(props.location.state != undefined){
+            return nameRoute+'/update/'+state.id;
+        }else{
+            return nameRoute+'/store';
+        }
+    }
+
     const onSubmit = e => {
         if(e.outOfDate === false) return false;
 
         axios({
             method: 'post',
-            url: '/user/store',
+            url: url(),
             data: e,
         }).then(response => {
             alert(response);
-            history.push('/user');
+            history.push(nameRoute);
         }).catch(function (error) {
             handleError(error);
         });
@@ -84,7 +94,16 @@ const formUser = props => {
         if(e != null && e.currentTarget != null){
             const { name, value } = e.currentTarget;
             setState(prev => {
-                return {...prev, [name]: value}
+                return {...prev, [name]: value};
+            });
+        }
+    }
+
+    const handleChangeNumber = name => value => {
+        // console.log(name, value)
+        if(!isNaN(value)){
+            setState(prev => {
+                return {...prev, [name]: value};
             });
         }
     }
@@ -99,9 +118,9 @@ const formUser = props => {
     }
 
     const attributeForm = {
-        back: '/user',
         state: state,
         rules: rules,
+        back: nameRoute,
         onSubmit:e => onSubmit(e),
     }
 
@@ -126,7 +145,7 @@ const formUser = props => {
                                 <Input name="name" label="Nama" onChange={handleOnChange}/>
                                 <Input type="password" name="password" label="Password" onChange={handleOnChange}/>  
                                 <Input type="password" name="rePassword" label="Konfirmasi Password" onChange={handleOnChange}/>   
-                                <InputNumber name="age" label="Umur" onChange={handleOnChange}/>
+                                <InputNumber name="age" label="Umur" onChange={handleChangeNumber('age')}/>
                                 <Input name="email" label="Email" onChange={handleOnChange}/>
                                 <Input name="address" label="Alamat" onChange={handleOnChange}/>
                             </Form>

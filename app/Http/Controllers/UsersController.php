@@ -61,6 +61,16 @@ class UsersController extends Controller
 
     public function store()
     {
+        return $this->save();
+    }
+
+    public function update($id)
+    {
+        return $this->save($id);
+    }
+
+    public function save($id = null)
+    {
         $checkEmail = $this->checkEmail();
         if($checkEmail) return response()->json('Maaf, Email Sudah Ada', 400);
 
@@ -77,11 +87,6 @@ class UsersController extends Controller
         }
 
         return response()->json('Data Berhasil Terkirim', 200);
-    }
-
-    public function update($id)
-    {
-
     }
 
     public function destroy($id)

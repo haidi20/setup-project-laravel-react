@@ -62,11 +62,11 @@ const user = props => {
                     </Breadcrumb> */}
                 </Col>
             </Row>
-            <FilterUser
+            {/* <FilterUser
                 addFilter={addFilter}
                 filterUser={filterUser} 
                 handleAddFilter={handleAddFilter}
-            />
+            /> */}
             <Content>
                 <div className="site-layout-background" >
                     <Datatable

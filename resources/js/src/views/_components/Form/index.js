@@ -33,7 +33,12 @@ const customForm = props => {
     const history   = useHistory();
 
     useEffect(() => {
-        form.setFieldsValue({...props.state});
+        let data = props.state;
+        let passing = {...data};
+
+        console.log(passing);
+
+        form.setFieldsValue(passing);
     }, [props.state]);
 
     const rules = props.rules ? props.rules : null;
