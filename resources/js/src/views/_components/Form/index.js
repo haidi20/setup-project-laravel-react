@@ -28,6 +28,7 @@ const tailLayout = {
 };
 
 const customForm = props => {
+    const [loading, setLoading] = useState(false);
     const [form]    = Form.useForm();
     const history   = useHistory();
 
@@ -61,9 +62,15 @@ const customForm = props => {
         name:"user",
         size:'middle',
         layout:'vertical',
-        onFinish:e => props.onSubmit(e),
+        onFinish:e => handleOnFinish(e),
         validateMessages: validateMessages,
         onFinishFailed:e => props.onSubmit(e),
+    }
+
+    const handleOnFinish = e => {
+        setLoading(true);
+
+        return props.onSubmit(e);
     }
 
     const handleRules = () => {
@@ -128,7 +135,7 @@ const customForm = props => {
                 })}
                 <div style={{marginTop: 20}}>
                     <Button className="btn-info" onClick={() => back()}> Kembali </Button>
-                    <Button className="btn-success" style={{float: 'right'}} htmlType="submit"> Kirim </Button>
+                    <Button className="btn-success" style={{float: 'right'}} htmlType="submit" loading={loading}> Kirim </Button>
                 </div>
             </Form>
             

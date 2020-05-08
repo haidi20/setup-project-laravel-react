@@ -4,6 +4,10 @@ import {withRouter, useHistory} from "react-router-dom";
 // support
 import axios from '../../supports/axios';
 import {alert, handleError} from '../../supports/helper';
+import {
+    required, number, email,
+    minChar, validator,
+} from '../../supports/validation';
 // components
 import Form from '../_components/Form';
 //partials
@@ -35,13 +39,7 @@ const formUser = props => {
         email: null,
         address: null,
         password: null,
-    });
-
-    const min       = min => ({ min: min });
-    const number    = { type: 'number' };
-    const minNumber = min => ({...number, min: min});
-    const email     = { type: 'email' };
-    const required  = { required: true };
+    });   
 
     useEffect(() => {
         insertDataEdit();
@@ -93,8 +91,8 @@ const formUser = props => {
 
     const rules = {
         name: [required],
-        password: [required, min(8)],
-        rePassword: [{validator: handleRePass}, min(8)],
+        password: [required, minChar(8)],
+        rePassword: [validator(handleRePass), minChar(8)],
         age: [required, number],
         email: [required, email],
         address: [required],
