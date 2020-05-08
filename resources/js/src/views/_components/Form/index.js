@@ -39,12 +39,20 @@ const customForm = props => {
 
     const validateMessages = {
         required: 'Maaf, ${label} harus diisi.',
+        string: {
+            len: "'${name}' must be exactly ${len} characters",
+            min: "Maaf, ${label} minimal ${min} digit",
+            max: "Maaf, ${label} maksimal ${max} digit",
+            range: "'${name}' must be between ${min} and ${max} characters",
+        },
         types: {
-          email: 'Maaf, ${label} harus berupa E-mail.',
-          number: 'Maaf, ${label} harus berupa Nomor.',
+            email: 'Maaf, ${label} harus berupa E-mail.',
+            number: 'Maaf, ${label} harus berupa Nomor.',
         },
         number: {
-          range: '${label} harus di antara ${min} and ${max}',
+            min: "Maaf, ${label} minimal ${min} digit",
+            max: "Maaf, ${label} maksimal ${max} digit",
+            range: '${label} harus di antara ${min} and ${max}',
         },
     };
 

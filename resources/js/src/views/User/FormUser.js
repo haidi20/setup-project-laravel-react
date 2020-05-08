@@ -7,7 +7,7 @@ import {alert, handleError} from '../../supports/helper';
 // components
 import Form from '../_components/Form';
 //partials
-import rules from './partials/Rules';
+// import rules from './partials/Rules';
 
 import './styles.scss';
 import 'antd/lib/row/style/css';
@@ -36,16 +36,15 @@ const formUser = props => {
         password: null,
     });
 
+    const min       = min => ({ min: min });
+    const number    = { type: 'number' };
+    const minNumber = min => ({...number, min: min});
+    const email     = { type: 'email' };
+    const required  = { required: true };
+
     useEffect(() => {
         insertDataEdit();
     }, [])
-
-    const attributeForm = {
-        back: '/user',
-        state: state,
-        rules: rules,
-        onSubmit:e => onSubmit(e),
-    }
 
     const insertDataEdit = () => {
         if(props.location != undefined){
@@ -68,9 +67,39 @@ const formUser = props => {
             alert(response);
             history.push('/user');
         }).catch(function (error) {
-            console.log(error.response);
             handleError(error);
         });
+    }
+
+    const handleRePass = (rule, value, callback) => {
+        if(value !== state.password && value != null){
+            callback('Maaf, tidak sama dengan password');
+        }else{
+            callback();
+        }        
+    }
+
+    const handleOnChange = e => {
+        const { name, value } = e.currentTarget;
+        setState(prev => {
+            return {...prev, [name]: value}
+        });
+    }
+
+    const rules = {
+        name: [required],
+        password: [required, min(8)],
+        rePassword: [{validator: handleRePass}, min(8)],
+        age: [required, number],
+        email: [required, email],
+        address: [required],
+    }
+
+    const attributeForm = {
+        back: '/user',
+        state: state,
+        rules: rules,
+        onSubmit:e => onSubmit(e),
     }
 
     return(
@@ -91,12 +120,12 @@ const formUser = props => {
                     <Content>
                         <div className="site-layout-background" >
                             <Form {...attributeForm} >
-                                <Input name="name" label="Nama" />
-                                <Input type="password" name="password" label="Password" />  
-                                <Input type="password" name="rePassword" label="Confirm Passowrd" />   
-                                <InputNumber name="age" label="Umur" />
-                                <Input name="email" label="Email" />
-                                <Input name="address" label="Alamat" />
+                                <Input name="name" label="Nama" onChange={handleOnChange}/>
+                                <Input type="password" name="password" label="Password" onChange={handleOnChange}/>  
+                                <Input type="password" name="rePassword" label="Confirm Password" onChange={handleOnChange}/>   
+                                <InputNumber name="age" label="Umur" onChange={handleOnChange}/>
+                                <Input name="email" label="Email" onChange={handleOnChange}/>
+                                <Input name="address" label="Alamat" onChange={handleOnChange}/>
                             </Form>
                         </div>
                     </Content>
