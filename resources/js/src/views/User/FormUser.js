@@ -71,12 +71,14 @@ const formUser = props => {
         });
     }
 
-    const handleRePass = (rule, value, callback) => {
-        if(value !== state.password && value != null){
-            callback('Maaf, tidak sama dengan password');
-        }else{
-            callback();
-        }        
+    const handleRePass = (rule, value) => {
+        return new Promise((resolve, reject) => {
+            if(value !== state.password){
+                reject('Maaf, tidak sama dengan password');
+            }
+
+            resolve();
+        });
     }
 
     const handleOnChange = e => {

@@ -61,8 +61,8 @@ const customForm = props => {
         name:"user",
         size:'middle',
         layout:'vertical',
-        validateMessages: validateMessages,
         onFinish:e => props.onSubmit(e),
+        validateMessages: validateMessages,
         onFinishFailed:e => props.onSubmit(e),
     }
 
