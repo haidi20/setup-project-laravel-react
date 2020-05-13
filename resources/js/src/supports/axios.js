@@ -1,6 +1,8 @@
 import axios from 'axios';
 
-const baseUrl = process.env.NODE_ENV === "development" ? "http://localhost:8000/api" : "localhost/setup-project/public/api";
+let baseDomain  = document.head.querySelector('meta[name="api-base-url"]').content;
+
+let baseUrl     = baseDomain + '/api';
 
 const instance = axios.create({
     baseURL: baseUrl,
