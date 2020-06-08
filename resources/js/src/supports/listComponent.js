@@ -8,7 +8,7 @@ import {
 // dashboard
 const Dashboard = React.lazy(() => import('../views/Dashboard'));
 // auth
-const Logout = React.lazy(() => import('../views/Auth/logout'));
+// const Logout = React.lazy(() => import('../views/Auth/logout'));
 // user
 const User = React.lazy(() => import('../views/User'));
 const FormUser = React.lazy(() => import('../views/User/FormUser'));

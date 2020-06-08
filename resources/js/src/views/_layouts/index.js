@@ -5,13 +5,14 @@ import './styles/index.scss'; // global style
 import ViewMenu from './partials/ViewMenu';
 
 //third party 
+import 'antd/lib/badge/style/css';
 import 'antd/lib/layout/style/css';
 import 'antd/lib/drawer/style/css';
 import 'antd/lib/breadcrumb/style/css';
 // import 'antd/dist/antd.css';
-import { Layout, Drawer } from 'antd';
+import { Layout, Drawer, Badge } from 'antd';
 import {
-  MenuOutlined,
+  MenuOutlined, NotificationOutlined
 } from '@ant-design/icons';
 
 const { Header, Footer, Sider } = Layout;
@@ -74,10 +75,16 @@ const mainLayout = ({children}) => {
           </Sider>
           <Layout className="site-layout">
             <Header className="site-layout-background">
-              {<MenuOutlined
-                  className="trigger"
-                  onClick={() => onCollapse()}
-                />}
+              <MenuOutlined
+                className="trigger"
+                onClick={() => onCollapse()}
+              />
+              <Badge count={5} style={{fontSize: '10px'}}>
+                <NotificationOutlined 
+                  style={{fontSize: '20px'}}
+                  // className="trigger"
+                />
+              </Badge>
             </Header>
             {children}
             <Footer style={{ textAlign: 'center' }}>Setup Project Laravel</Footer>

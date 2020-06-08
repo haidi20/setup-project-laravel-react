@@ -13,6 +13,13 @@ export const handleError = error => {
     }
 
     alert(message);
+  }if(Number(response.status) >= 404){
+    let message = {
+      data: 'Maaf, Tidak Ditemukan',
+      status: 404,
+    }
+
+    alert(message);
   }else{
     alert(response);
   }
