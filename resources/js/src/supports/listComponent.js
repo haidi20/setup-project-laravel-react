@@ -12,9 +12,10 @@ const Dashboard = React.lazy(() => import('../views/Dashboard'));
 // user
 const User = React.lazy(() => import('../views/User'));
 const FormUser = React.lazy(() => import('../views/User/FormUser'));
-// organization
+// user group
 const UserGroup = React.lazy(() => import('../views/UserGroup'));
 const FormUserGroup = React.lazy(() => import('../views/UserGroup/FormUserGroup'));
+const Access = React.lazy(() => import('../views/UserGroup/partials/Access'));
 
 /*
     NOTE: 
@@ -79,6 +80,17 @@ const listMenu = [
         showMenu: false, 
         isSubMenu: false,
         component: <FormUserGroup />,
+        subMenu: null,
+    },
+    {
+        name: 'access', 
+        index: null,
+        icon: null,
+        path: '/user-group/access',
+        access: ['edit'],
+        showMenu: false, 
+        isSubMenu: false,
+        component: <Access />,
         subMenu: null,
     },
 ];

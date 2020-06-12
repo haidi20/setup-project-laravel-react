@@ -1,4 +1,5 @@
 import React, {useEffect, useState} from 'react';
+import {withRouter, useHistory} from "react-router-dom";
 
 // components
 import Datatable from '../_components/Datatable';
@@ -13,16 +14,27 @@ import {
     Row, Col, Layout, Breadcrumb,
 } from 'antd';
 import {
-    BarsOutlined
+    ControlOutlined
 } from '@ant-design/icons';
 
 const { Content }   = Layout;
 
 const userGroup = props => {
-
+    const history   = useHistory();
     const nameRoute = '/user-group';
     const columns = [
         {title: 'Name', dataIndex: 'name', key: 'name'},
+    ];
+
+    const access = data => {
+        history.push({
+            pathname: nameRoute+"/access",
+            state: data,
+        });
+    }
+
+    const addAction = [
+        {title: <ControlOutlined />, color: 'info', handle:e => access(e)},
     ];
 
     return(
@@ -43,6 +55,7 @@ const userGroup = props => {
                     <Datatable
                         columns={columns} 
                         nameRoute={nameRoute}
+                        addAction={addAction}
                     />
                 </div>
             </Content>
@@ -50,4 +63,4 @@ const userGroup = props => {
     )
 }
 
-export default userGroup;
+export default withRouter(userGroup);

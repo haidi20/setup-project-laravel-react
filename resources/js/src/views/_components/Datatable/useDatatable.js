@@ -101,8 +101,8 @@ const useDatatable = props => {
         ];
 
         actions = [
-            ...actions,
             ...addAction,
+            ...actions,
         ];
 
         if(usePopup){

@@ -10,7 +10,7 @@ class User extends Authenticatable
 {
     use Notifiable;
 
-    protected $appends = ['key'];
+    protected $appends = ['key', 'name_user_group'];
 
     /**
      * The attributes that are mass assignable.
@@ -29,6 +29,11 @@ class User extends Authenticatable
     protected $hidden = [
         'password', 'remember_token',
     ];
+
+    public function user_group()
+    {
+        return $this->belongsTo('App\Models\UserGroup');
+    }
 
     public function searchAbleColumn()
     {
@@ -57,5 +62,12 @@ class User extends Authenticatable
     public function getKeyAttribute()
     {
         return $this->id;
+    }
+
+    public function getNameUserGroupAttribute()
+    {
+        if($this->user_group){
+            return $this->user_group->name;
+        }
     }
 }

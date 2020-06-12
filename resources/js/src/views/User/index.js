@@ -29,6 +29,7 @@ const user = props => {
     const [addFilter, setAddFilter] = useState(initialFilter);
     const columns = [
         {title: 'Name', dataIndex: 'name', key: 'name'},
+        {title: 'Name User Group', dataIndex: 'name_user_group', key: 'name_user_group'},
     ];
     const addAction = [
         {title: <BarsOutlined />, color: 'info', handle:e => handleDetail(e)},

@@ -29,7 +29,7 @@ class UsersTableSeeder extends Seeder
                 'email_verified_at' => now(),
                 'address'           => $faker->address,
                 'age'               => rand(10, 30),
-                'organication_id'   => 1,
+                'user_group_id'     => rand(1, 3),
                 'password'          => bcrypt('samarinda'),
                 'remember_token'    => str_random(10),
             ]);
