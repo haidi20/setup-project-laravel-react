@@ -13,8 +13,8 @@ const Dashboard = React.lazy(() => import('../views/Dashboard'));
 const User = React.lazy(() => import('../views/User'));
 const FormUser = React.lazy(() => import('../views/User/FormUser'));
 // organization
-const Organization = React.lazy(() => import('../views/Organization'));
-const FormOrganization = React.lazy(() => import('../views/Organization/FormOrganization'));
+const UserGroup = React.lazy(() => import('../views/UserGroup'));
+const FormUserGroup = React.lazy(() => import('../views/UserGroup/FormUserGroup'));
 
 /*
     NOTE: 
@@ -60,25 +60,25 @@ const listMenu = [
         subMenu: null,
     },
     {
-        name: 'Organisasi',
-        index: 'organization', 
+        name: 'User Group',
+        index: 'userGroup', 
         icon: <UsergroupAddOutlined />,
-        path: '/organization',
+        path: '/user-group',
         access: ['read', 'create', 'edit', 'delete'],
         showMenu: true, 
         isSubMenu: false,
-        component: <Organization />,
+        component: <UserGroup />,
         subMenu: null,
     },
     {
-        name: 'Form Organisasi', 
+        name: 'Form User Group', 
         index: null,
         icon: null,
-        path: '/organization/form',
+        path: '/user-group/form',
         access: null,
         showMenu: false, 
         isSubMenu: false,
-        component: <FormOrganization />,
+        component: <FormUserGroup />,
         subMenu: null,
     },
 ];

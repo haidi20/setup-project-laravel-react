@@ -4,13 +4,13 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 
-use App\Models\Organization;
+use App\Models\UserGroup;
 
-class OrganizationController extends Controller
+class UserGroupController extends Controller
 {
     public function index()
     {
-        $data = Organization::sorted()
+        $data = UserGroup::sorted()
                             ->search()
                             ->filter()
                             ->paginate(request('per_page', 25));
@@ -31,9 +31,9 @@ class OrganizationController extends Controller
     public function save($id = null)
     {
         if($id){
-            $data   = Organization::find($id);
+            $data   = UserGroup::find($id);
         }else{
-            $data   = New Organization();
+            $data   = New UserGroup();
         }
 
         try {
@@ -49,7 +49,7 @@ class OrganizationController extends Controller
     public function destroy($id)
     {
         try {
-            $data = Organization::findOrFail($id);
+            $data = UserGroup::findOrFail($id);
             $data->delete();
         } catch (\Execption $e) {
             return response()->json('Maaf, Data Tidak Berhasil Diperbaharui', 500);

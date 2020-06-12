@@ -27,11 +27,11 @@ Route::group(['prefix' => 'user', 'name' => 'user.'], function(){
     Route::get('/search-option', 'UsersController@searchOption')->name('searchOption');
 });
 
-Route::group(['prefix' => 'organization', 'name' => 'organization'], function(){
-    Route::get('/', 'OrganizationController@index')->name('index');
-    Route::post('/store', 'OrganizationController@store')->name('store');
-    Route::post('/update/{id}', 'OrganizationController@update')->name('update');
-    Route::post('/delete/{id}', 'OrganizationController@destroy')->name('delete');
+Route::group(['prefix' => 'user-group', 'name' => 'user-group'], function(){
+    Route::get('/', 'UserGroupController@index')->name('index');
+    Route::post('/store', 'UserGroupController@store')->name('store');
+    Route::post('/update/{id}', 'UserGroupController@update')->name('update');
+    Route::post('/delete/{id}', 'UserGroupController@destroy')->name('delete');
 });
 
 Route::group(['prefix' => 'notification', 'name' => 'notification'], function(){

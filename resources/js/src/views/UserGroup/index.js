@@ -18,9 +18,9 @@ import {
 
 const { Content }   = Layout;
 
-const user = props => {
+const userGroup = props => {
 
-    const nameRoute = '/organization';
+    const nameRoute = '/user-group';
     const columns = [
         {title: 'Name', dataIndex: 'name', key: 'name'},
     ];
@@ -29,7 +29,7 @@ const user = props => {
         <div>
             <Row className="header-content">
                 <Col span="20">
-                    <h1 className="title-content">Organisasi</h1>
+                    <h1 className="title-content">User Group</h1>
                 </Col>
                 <Col span="4">
                     {/* <Breadcrumb style={{ margin: '16px 0' }}>
@@ -50,4 +50,4 @@ const user = props => {
     )
 }
 
-export default user;
+export default userGroup;

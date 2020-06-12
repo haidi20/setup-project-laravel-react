@@ -21,8 +21,8 @@ import {
 
 const { Content }   = Layout;
 
-const formOrganization = props => {
-    const nameRoute = '/organization';
+const formUserGroup = props => {
+    const nameRoute = '/user-group';
     const history   = useHistory();
     const [state, setState] = useState({
         id: null,
@@ -115,4 +115,4 @@ const formOrganization = props => {
     )
 }
 
-export default withRouter(formOrganization);
+export default withRouter(formUserGroup);

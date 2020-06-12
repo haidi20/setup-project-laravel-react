@@ -4,8 +4,9 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 
-class Organization extends Model
+class UserGroup extends Model
 {
+    protected $table = 'user_group';
     protected $appends = ['key'];
 
     public function scopeSearch($query)
