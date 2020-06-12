@@ -33,3 +33,7 @@ Route::group(['prefix' => 'organization', 'name' => 'organization'], function(){
     Route::post('/update/{id}', 'OrganizationController@update')->name('update');
     Route::post('/delete/{id}', 'OrganizationController@destroy')->name('delete');
 });
+
+Route::group(['prefix' => 'notification', 'name' => 'notification'], function(){
+    Route::get('/', 'NotificationController@index')->name('index');
+});

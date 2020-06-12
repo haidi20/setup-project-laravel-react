@@ -17,13 +17,12 @@ import './styles.scss';
 import 'antd/lib/row/style/css';
 import 'antd/lib/col/style/css';
 import 'antd/lib/input/style/css';
-import 'antd/lib/button/style/css';
 import 'antd/lib/layout/style/css';
 import 'antd/lib/breadcrumb/style/css';
 import 'antd/lib/input-number/style/css';
 import { 
     Row, Col, Layout, Breadcrumb,
-    Input, Button, InputNumber,
+    Input, InputNumber,
 } from 'antd';
 import {
     BarsOutlined

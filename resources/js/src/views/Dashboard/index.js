@@ -1,16 +1,33 @@
 import React from 'react';
 
+// supports
+import axios from '../../supports/axios';
+import {alert, handleError} from '../../supports/helper';
+
 import 'antd/lib/row/style/css';
 import 'antd/lib/col/style/css';
 import 'antd/lib/layout/style/css';
+import 'antd/lib/button/style/css';
 import 'antd/lib/breadcrumb/style/css';
 import { 
-    Row, Col, Layout, Breadcrumb,
+    Row, Col, Layout, Breadcrumb, Button,
 } from 'antd';
 
 const { Content } = Layout;
 
 const dashboard = props => {
+
+    const send = props => {
+        // console.log('terkirim');
+
+        axios.get('notification')
+            .then(response => {
+                alert(response);
+            })
+            .catch(e => {
+                handleError(e);
+            });
+    }
 
     return(
         <div>
@@ -28,6 +45,9 @@ const dashboard = props => {
             <Content>
                 <div className="site-layout-background" >
                     {/* content */}
+                    <Button 
+                        className="btn-success" onClick={() => send()} style={{marginBottom: 20}}
+                    > Send </Button>
                 </div>
             </Content>
         </div>
