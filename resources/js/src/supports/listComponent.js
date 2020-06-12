@@ -8,7 +8,6 @@ import {
 // dashboard
 const Dashboard = React.lazy(() => import('../views/Dashboard'));
 // auth
-// const Logout = React.lazy(() => import('../views/Auth/logout'));
 // user
 const User = React.lazy(() => import('../views/User'));
 const FormUser = React.lazy(() => import('../views/User/FormUser'));
@@ -65,7 +64,7 @@ const listMenu = [
         index: 'userGroup', 
         icon: <UsergroupAddOutlined />,
         path: '/user-group',
-        access: ['read', 'create', 'edit', 'delete'],
+        access: ['read', 'create', 'edit', 'delete', 'access',],
         showMenu: true, 
         isSubMenu: false,
         component: <UserGroup />,
@@ -87,7 +86,7 @@ const listMenu = [
         index: null,
         icon: null,
         path: '/user-group/access',
-        access: ['edit'],
+        access: null,
         showMenu: false, 
         isSubMenu: false,
         component: <Access />,

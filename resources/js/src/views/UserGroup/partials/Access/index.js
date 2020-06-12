@@ -3,9 +3,6 @@ import {withRouter, useHistory} from "react-router-dom";
 
 import useAccess from './useAccess';
 
-//supports
-import listMenu from '../../../../supports/listComponent';
-
 import 'antd/lib/row/style/css';
 import 'antd/lib/col/style/css';
 import 'antd/lib/table/style/css';
@@ -18,18 +15,8 @@ const { Content }   = Layout;
 
 const access = props => {
     const {
-        nameRoute, columns, setState,
+        nameRoute, columns, setState, menus,
     } = useAccess();
-    let menus = listMenu
-                    .filter(item => item.index != null)
-                    .map((item, index) => {
-                        return {
-                            ...item,
-                            key: index,
-                        }
-                    });
-
-    console.log(menus);
 
     useEffect(() => {
         // insertDataEdit();
