@@ -10,8 +10,11 @@ import 'antd/lib/badge/style/css';
 import 'antd/lib/layout/style/css';
 import 'antd/lib/drawer/style/css';
 import 'antd/lib/breadcrumb/style/css';
+import 'antd/lib/button/style/css';
+import 'antd/lib/descriptions/style/css';
+import 'antd/lib/page-header/style/css';
 // import 'antd/dist/antd.css';
-import { Layout, Drawer, Badge } from 'antd';
+import { Layout, Drawer, Badge,  PageHeader, Button, Descriptions } from 'antd';
 import {
   MenuOutlined, NotificationOutlined
 } from '@ant-design/icons';
@@ -88,19 +91,34 @@ const mainLayout = ({children}) => {
             <ViewMenu />
           </Sider>
           <Layout className="site-layout">
-            <Header className="site-layout-background">
-              <MenuOutlined
+              <PageHeader
+                className="site-layout-background"
+                ghost={false}
+                // onBack={() => window.history.back()}
+                // title="Title"
+                // subTitle="This is a subtitle"
+                extra={[
+                  <MenuOutlined key={0} className="trigger" onClick={() => onCollapse()} />,
+                  <Badge key={1} offset={[5, 5]} count={sumNotif} className="icon-notif">
+                    <NotificationOutlined  style={{fontSize: '20px'}} />
+                  </Badge>,
+                ]}
+              >
+                {/* all about description header */}
+              </PageHeader>
+            {/* <Header 
+              className="site-layout-background"
+            > */}
+              {/* <MenuOutlined
                 className="trigger"
                 onClick={() => onCollapse()}
               />
-              <Badge count={sumNotif} style={{fontSize: '10px'}}>
-                <NotificationOutlined 
-                  style={{fontSize: '20px'}}
-                  // className="trigger"
-                />
-              </Badge>
-            </Header>
-            {children}
+              <Badge  offset={[5, 5]} count={sumNotif} style={{fontSize: '10px'}}>
+                <NotificationOutlined style={{fontSize: '20px'}} />
+              </Badge> */}
+              
+            {/* </Header> */}
+              {children}
             <Footer style={{ textAlign: 'center' }}>Setup Project Laravel</Footer>
           </Layout>
         </Layout>

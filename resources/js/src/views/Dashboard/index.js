@@ -22,7 +22,7 @@ const dashboard = props => {
 
         axios.get('notification')
             .then(response => {
-                alert(response);
+                // alert(response);
             })
             .catch(e => {
                 handleError(e);

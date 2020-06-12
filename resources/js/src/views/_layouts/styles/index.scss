@@ -20,14 +20,30 @@ $success-second: #32ff7e !important;
         font-size: 15px;
     }
 } 
-
-section.site-layout {
-    header.site-layout-background {
-        background: $white;
-        height: 40px !important;
-        padding: 0px !important;
-        line-height: 40px !important;
-    }
+// section.site-layout {
+//     header.site-layout-background {
+//         background: $white;
+//         height: 40px !important;
+//         padding: 0px !important;
+//         line-height: 40px !important;
+//     }
+// }
+.ant-page-header {
+    background: $white;
+    height: 40px !important;
+    padding: 0px !important;
+    padding-right: 15px !important;
+    line-height: 40px !important;
+}
+.ant-page-header-heading {
+    justify-content: start !important;
+}
+.ant-page-header-heading-extra {
+    width: 100%;
+}
+.icon-notif {
+    float: right;
+    margin-top: 6px !important;
 }
 // end header
 .trigger {
