@@ -36,7 +36,7 @@ Route::group(['prefix' => 'user-group', 'name' => 'user-group'], function(){
 
 Route::group(['prefix' => 'permission', 'name' => 'permission'], function(){
     Route::get('/', 'PermissionController@index')->name('index');
-    // Route::post('/store', 'PermissionController@store')->name('store');
+    Route::post('/store', 'PermissionController@store')->name('store');
     // Route::post('/update/{id}', 'PermissionController@update')->name('update');
     // Route::post('/delete/{id}', 'PermissionController@destroy')->name('delete');
 });

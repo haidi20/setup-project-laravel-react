@@ -12,9 +12,10 @@ import {
 } from 'antd';
 
 const useAccess = props => {
-    const nameRoute = '/user-group';
+    const nameRoute = '/permission';
     const [access, setAccess]   = useState({});
     const [checked, setChecked] = useState({});
+    const [clickMenu, setClickMenu] = useState({});
     const [state, setState] = useState({
         userGroup:{},
         data:[],
@@ -25,8 +26,12 @@ const useAccess = props => {
     });
 
     useEffect(() => {
+        sendPermissions();
+    }, [clickMenu])
+
+    useEffect(() => {
         insertData();
-        console.log(checked);
+        // console.log(checked);
     }, [checked]);
 
     useEffect(() => {
@@ -36,7 +41,7 @@ const useAccess = props => {
     const getAccess = async () => {
         await axios({
             method: 'get',
-            url: 'permission',
+            url: nameRoute,
             params: state.userGroup,
         }).then(response => {
             let data = response.data;
@@ -64,33 +69,26 @@ const useAccess = props => {
         });
     }
 
-    const handleChecked = (nameMenu, item) => {
-        if(checked[nameMenu]){
-            if(checked[nameMenu][item]){
-                return checked[nameMenu][item];
+    const handleChecked = (menu, item) => {
+        if(checked[menu]){
+            if(checked[menu][item]){
+                return checked[menu][item];
             }
         }
     }
 
-    const choose = (e, nameMenu, access) => {
-        if(e.target.checked == true){
-            setChecked(prev => {
-                return {
-                    ...prev,
-                    [nameMenu]: {
-                        ...prev[nameMenu],
-                        [access]: true
-                    }
+    const choose = (e, menu, access) => {
+        setChecked(prev => {
+            return {
+                ...prev,
+                [menu]: {
+                    ...prev[menu],
+                    [access]: e.target.checked
                 }
-            });
-        }else{
-            setChecked(prev => {
-                return {
-                    ...prev,
-                    [nameMenu]: Object.keys(checked[nameMenu]).filter(item => item != access)
-                }
-            });        
-        }
+            }
+        });
+
+        setClickMenu({menu: menu});
     }
 
     const customAccess = menu => {
@@ -118,6 +116,22 @@ const useAccess = props => {
         setState(prev => {
             return {...prev, data: data}
         });
+    }
+
+    const sendPermissions = () => {
+
+        let data = {
+            menu: clickMenu.menu,
+            access: checked[clickMenu.menu],
+        }
+
+        axios({
+            method: 'post',
+            url: nameRoute + '/store',
+            data:data
+        }).then(response => {
+            console.log(response);
+        })
     }
 
     return {
