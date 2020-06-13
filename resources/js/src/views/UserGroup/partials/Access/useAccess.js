@@ -120,9 +120,14 @@ const useAccess = props => {
 
     const sendPermissions = () => {
 
+        let access = checked[clickMenu.menu] && 
+                    Object.keys(checked[clickMenu.menu])
+                    .filter(item => checked[clickMenu.menu][item] != false)
+                    .toString();
+
         let data = {
             menu: clickMenu.menu,
-            access: checked[clickMenu.menu],
+            access: access,
         }
 
         axios({
