@@ -16,7 +16,7 @@ class UserGroupsTableSeeder extends Seeder
     public function run()
     {
         $now = Carbon::now();
-        $role = ['developer', 'admin', 'user'];
+        $role = ['admin', 'developer', 'user'];
 
         foreach ($role as $index => $item) {
             UserGroup::insert([

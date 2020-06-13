@@ -13,8 +13,8 @@ const User = React.lazy(() => import('../views/User'));
 const FormUser = React.lazy(() => import('../views/User/FormUser'));
 // user group
 const UserGroup = React.lazy(() => import('../views/UserGroup'));
-const FormUserGroup = React.lazy(() => import('../views/UserGroup/FormUserGroup'));
 const Access = React.lazy(() => import('../views/UserGroup/partials/Access'));
+const FormUserGroup = React.lazy(() => import('../views/UserGroup/FormUserGroup'));
 
 /*
     NOTE: 

@@ -36,7 +36,7 @@ const user = props => {
     ];
 
     const handleDetail = e => {
-        console.log(e);
+        // console.log(e);
         dispatch({type: 'CLOSE_POPUP'});
     }
 
@@ -45,7 +45,7 @@ const user = props => {
     }
 
     const handleAddFilter = (e, name) => {
-        console.log(e, name);
+        // console.log(e, name);
         setFilterUser({...e});
         setAddFilter({...addFilter, [name]: e.value});
     }

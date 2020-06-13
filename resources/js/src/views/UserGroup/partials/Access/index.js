@@ -15,22 +15,25 @@ const { Content }   = Layout;
 
 const access = props => {
     const {
-        nameRoute, columns, setState, menus,
+        state , setState,
     } = useAccess();
 
     useEffect(() => {
-        // insertDataEdit();
+        insertDataEdit();
     }, [])
 
-    // const insertDataEdit = () => {
-    //     if(props.location.state != undefined){
-    //         let data = props.location.state;
+    const insertDataEdit = () => {
+        if(props.location.state != undefined){
+            let data = props.location.state;
 
-    //         setState(prev => {
-    //             return {...prev, ...data}
-    //         });
-    //     }
-    // }
+            setState(prev => {
+                return {
+                    ...prev,
+                    userGroup: data,
+                }
+            });
+        }
+    }
 
     return(
         <div>
@@ -45,9 +48,9 @@ const access = props => {
                         <div className="site-layout-background" >
                             <Table
                                 size="small"
-                                columns={columns} 
+                                columns={state.columns} 
                                 style={{minHeight: 270}}
-                                dataSource={menus} 
+                                dataSource={state.data} 
                                 locale={{ emptyText: 'Data Tidak Ada' }}
                             />
                         </div>
