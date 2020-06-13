@@ -25,13 +25,9 @@ const useAccess = props => {
     });
 
     useEffect(() => {
-        insertMenus();
-        // console.log(checked);
+        insertData();
+        console.log(checked);
     }, [checked]);
-
-    useEffect(() => {
-        // console.log(state);
-    }, [state]);
 
     useEffect(() => {
         getAccess();
@@ -46,19 +42,21 @@ const useAccess = props => {
             let data = response.data;
             if(data.length != 0){
                 data.map(item => {
-                    let access = item.access.split(',');
+                    if(item.access.length != 0){
+                        let access = item.access.split(',');
 
-                    access.map(value => {
-                        setChecked(prev => {
-                            return {
-                                ...prev,
-                                [item.menu]: {
-                                    ...prev[item.menu],
-                                    [value]: true,
-                                },
-                            }
-                        });
-                    })
+                        access.map(value => {
+                            setChecked(prev => {
+                                return {
+                                    ...prev,
+                                    [item.menu]: {
+                                        ...prev[item.menu],
+                                        [value]: true,
+                                    },
+                                }
+                            });
+                        })
+                    }
                 });
             }
         }).catch(function (error) {
@@ -74,8 +72,25 @@ const useAccess = props => {
         }
     }
 
-    const choose = e => {
-        console.log(e.target);
+    const choose = (e, nameMenu, access) => {
+        if(e.target.checked == true){
+            setChecked(prev => {
+                return {
+                    ...prev,
+                    [nameMenu]: {
+                        ...prev[nameMenu],
+                        [access]: true
+                    }
+                }
+            });
+        }else{
+            setChecked(prev => {
+                return {
+                    ...prev,
+                    [nameMenu]: Object.keys(checked[nameMenu]).filter(item => item != access)
+                }
+            });        
+        }
     }
 
     const customAccess = menu => {
@@ -83,13 +98,13 @@ const useAccess = props => {
                 <Checkbox 
                     key={index} 
                     name={item} 
-                    onChange={choose}
+                    onChange={e => choose(e, menu.index, item)}
                     checked={handleChecked(menu.index, item)}
                 >{item}</Checkbox> 
             );
     };
 
-    const insertMenus = () => {
+    const insertData = () => {
         const data = listMenu
                         .filter(item => item.index != null)
                         .map((item, index) => {
