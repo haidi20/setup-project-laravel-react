@@ -17,6 +17,19 @@ class PermissionController extends Controller
 
     public function store()
     {
-        return request()->all();
+        // return request()->all();
+        if(request('menu')){
+            try {
+                Permission::updateOrCreate([
+                    'menu'          => request('menu'),
+                    'access'        => request('access'),
+                    'user_group_id' => request('user_group_id'),
+                ]);
+            } catch (\Execption $e) {
+                return response()->json('Maaf, Data Tidak Berhasil Terkirim', 500);
+            }
+    
+            return response()->json('Data Berhasil Terkirim', 200);
+        }
     }
 }

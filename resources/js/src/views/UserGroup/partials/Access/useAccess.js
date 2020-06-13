@@ -128,6 +128,7 @@ const useAccess = props => {
         let data = {
             menu: clickMenu.menu,
             access: access,
+            user_group_id: state.userGroup.id
         }
 
         axios({
