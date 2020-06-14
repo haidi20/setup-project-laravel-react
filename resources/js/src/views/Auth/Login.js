@@ -1,6 +1,8 @@
 import React, {useState, useEffect} from 'react';
 
 // support
+import axios from '../../supports/axios';
+import {alert, handleError} from '../../supports/helper';
 import {
     required
 } from '../../supports/validation';
@@ -23,8 +25,21 @@ const login = () => {
     });
 
     const rules = {
-        name: [required],
-        password: [required],
+        name: [],
+        password: [],
+    }
+
+    const onSubmit = e => {
+        axios({
+            method: 'post',
+            url: '/auth/login',
+            data: {name: 'nata', password: 'samarinda'},
+        }).then(response => {
+            console.log(response);
+        }).catch(function (error) {
+            console.log(error);
+            // handleError(error);
+        });
     }
 
     const attributeForm = {
@@ -36,7 +51,8 @@ const login = () => {
     }
 
     const handleOnChange = e => {
-        console.log(e.target.value);
+        // console.log(e.target.value);
+        
     }
 
     const styled = {
@@ -53,8 +69,8 @@ const login = () => {
                     <div className="site-layout-background" >
                         <h1>Login</h1>
                         <Form {...attributeForm} >
-                            <Input name="name" label="Username" onChange={handleOnChange}/>
-                            <Input type="password" name="password" label="Password" onChange={handleOnChange}/>
+                            <Input name="name" label="Username" onChange={handleOnChange} value="nama"/>
+                            <Input type="password" name="password" label="Password" onChange={handleOnChange} value="keren"/>
                         </Form>
                     </div>
                 </Content>
