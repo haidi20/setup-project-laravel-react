@@ -45,7 +45,6 @@ const formUserGroup = props => {
 
     const url = () => {
         if(props.location.state != undefined){
-            console.log('edit');
             return nameRoute+'/update/'+state.id;
         }else{
             return nameRoute+'/store';
@@ -91,7 +90,7 @@ const formUserGroup = props => {
         <div>
             <Row className="header-content">
                 <Col span="20">
-                    <h1 className="title-content">Form Organization</h1>
+                    <h1 className="title-content">Form User Group</h1>
                 </Col>
                 <Col span="4">
                     {/* <Breadcrumb style={{ margin: '16px 0' }}>
@@ -105,7 +104,7 @@ const formUserGroup = props => {
                     <Content>
                         <div className="site-layout-background" >
                             <Form {...attributeForm} >
-                                <Input name="name" label="Nama" onChange={handleOnChange}/>
+                                <Input name="name" label="Nama Group" onChange={handleOnChange}/>
                             </Form>
                         </div>
                     </Content>

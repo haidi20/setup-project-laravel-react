@@ -109,7 +109,6 @@ const customForm = props => {
             }
         });
 
-        console.log(result);
         setRules(result);  
     }
 
@@ -128,7 +127,7 @@ const customForm = props => {
                 {React.Children.map(props.children, (child, index) => {
                     let attribute  = child.props;
                     let name        = attribute.name;
-                    // console.log(attribute);
+                    
                     return(
                         <Form.Item
                             {...attribute}

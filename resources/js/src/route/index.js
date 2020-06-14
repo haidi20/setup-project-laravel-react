@@ -7,7 +7,7 @@ import {
 } from "react-router-dom";
 
 import MainLayout from '../views/_layouts';
-import listMenu from '../supports/listComponent';
+import listMenu from '../supports/listMenu';
 import Loading from '../views/_components/Loading';
 
 const ListRoute = props => {

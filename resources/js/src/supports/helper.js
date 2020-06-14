@@ -3,6 +3,8 @@ import React from 'react';
 // third party
 import Swal from 'sweetalert2';
 
+let baseDomain  = document.head.querySelector('meta[name="api-base-url"]').content;
+
 export const handleError = error => {
   let response = error.response;
 
@@ -28,14 +30,24 @@ export const handleError = error => {
 export const alert = (response, type) => {
   let icon = '', title = '';
 
+  let audioError    = new Audio(baseDomain + '/audio/error.ogg');
+  let audioSuccess  = new Audio(baseDomain + '/audio/success.ogg');
+  let audioWarning  = new Audio(baseDomain + '/audio/warning.ogg');
+
   if(Number(response.status) >= 200 && Number(response.status) <= 299){
+      audioSuccess.play();
+
       icon    = 'success';
       title   = 'Notification';
   }else if(Number(response.status) >= 400 && Number(response.status) <= 499){
+      audioWarning.play();
+
       icon    = 'warning';
       title   = 'Attention';
   }
   else if(Number(response.status) >= 500 && Number(response.status) <= 599){
+      audioError.play();
+
       icon    = 'error';
       title   = 'Warning';
   }   

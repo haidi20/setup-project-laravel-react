@@ -6,14 +6,16 @@ import useAccess from './useAccess';
 import 'antd/lib/row/style/css';
 import 'antd/lib/col/style/css';
 import 'antd/lib/table/style/css';
+import 'antd/lib/button/style/css';
 import 'antd/lib/layout/style/css';
 import { 
-    Row, Col, Layout, Table
+    Row, Col, Layout, Table, Button
 } from 'antd';
 
 const { Content }   = Layout;
 
 const access = props => {
+    const history   = useHistory();
     const {
         state , setState,
     } = useAccess();
@@ -35,16 +37,29 @@ const access = props => {
         }
     }
 
+    const back = () => {
+        history.push('/user-group');
+    }
+
     return(
         <div>
+
             <Row className="header-content">
                 <Col span="20">
                     <h1 className="title-content">Access</h1>
                 </Col>
             </Row>
             <Row>
-                <Col span={24}>
+                <Col span={24}> 
                     <Content>
+                        <Button 
+                            size="large"
+                            className="btn-success"
+                            style={{marginBottom: 10}}
+                            onClick={() => back()} 
+                        >
+                            Kembali
+                        </Button>
                         <div className="site-layout-background" >
                             <Table
                                 size="small"

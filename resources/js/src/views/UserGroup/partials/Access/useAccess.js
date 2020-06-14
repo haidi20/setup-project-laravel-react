@@ -3,13 +3,11 @@ import React, {useState, useEffect} from 'react';
 
 //supports
 import axios from '../../../../supports/axios';
-import listMenu from '../../../../supports/listComponent';
+import listMenu from '../../../../supports/accessMenu';
 import {alert, handleError, isEmpty} from '../../../../supports/helper';
 
 import 'antd/lib/checkbox/style/css';
-import { 
-    Checkbox
-} from 'antd';
+import { Checkbox } from 'antd';
 
 const useAccess = props => {
     const nameRoute = '/permission';
@@ -45,7 +43,6 @@ const useAccess = props => {
             params: state.userGroup,
         }).then(response => {
             let data = response.data;
-            // console.log(data);
             if(data.length != 0){
                 data.map(item => {
                     if(item.access != null){
@@ -63,6 +60,7 @@ const useAccess = props => {
                             });
                         })
                     }
+                    // console.log(data);
                 });
             }
         }).catch(function (error) {
@@ -140,7 +138,7 @@ const useAccess = props => {
             data:data
         }).then(response => {
             // console.log(response);
-            // alert(response);
+            alert(response);
         }).catch(error => {
             console.log(error);
             // handleError(error);

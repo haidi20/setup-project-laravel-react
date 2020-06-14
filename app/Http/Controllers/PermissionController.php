@@ -28,7 +28,7 @@ class PermissionController extends Controller
                 return response()->json('Maaf, Data Tidak Berhasil Terkirim', 500);
             }
     
-            return response()->json($data, 200);
+            return response()->json('Data Berhasil Dikirim', 200);
         }
     }
 }
