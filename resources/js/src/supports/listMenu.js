@@ -8,6 +8,7 @@ import {
 // dashboard
 const Dashboard = React.lazy(() => import('../views/Dashboard'));
 // auth
+const Login = React.lazy(() => import('../views/Auth/Login'));
 // user
 const User = React.lazy(() => import('../views/User'));
 const FormUser = React.lazy(() => import('../views/User/FormUser'));
@@ -107,6 +108,17 @@ const listMenu = [
                 subMenu: null,
             },
         ],
+    },
+    {
+        name: 'login', 
+        index: null,
+        icon: null,
+        path: '/login',
+        access: null,
+        showMenu: false, 
+        isSubMenu: false,
+        component: <Login />,
+        subMenu: null,
     },
 ];
 

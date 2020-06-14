@@ -68,18 +68,20 @@ const mainLayout = ({children}) => {
           visible={visible}
           title={nameProject}
           onClose={() => menuMobile()}
+          style={{display: 'none'}}
         >
           <ViewMenu 
             menuMobile={() => menuMobile()}
           />
         </Drawer>
         <Layout
-          style={{ minHeight: '100vh' }}
+          style={{ minHeight: '100vh', }}
         >
           <Sider 
             collapsed={collapsed}
 
             breakpoint="lg"
+            style={{display: 'none'}}
             collapsedWidth={isMobile ? 0 : undefined}
             onBreakpoint={broken => handleOnBreakpoint(broken)}
             onCollapse={(collapsed, type) => {setCollapsed(collapsed);}}
@@ -92,8 +94,9 @@ const mainLayout = ({children}) => {
           </Sider>
           <Layout className="site-layout">
               <PageHeader
-                className="site-layout-background"
                 ghost={false}
+                style={{display: 'none'}}
+                className="site-layout-background"
                 // onBack={() => window.history.back()}
                 // title="Title"
                 // subTitle="This is a subtitle"

@@ -31,6 +31,7 @@ const customForm = props => {
     const [loading, setLoading] = useState(false);
     const [form]    = Form.useForm();
     const history   = useHistory();
+    const hideBack  = props.hideBack ? 'none' : null;
 
     useEffect(() => {
         let data = props.state;
@@ -78,39 +79,39 @@ const customForm = props => {
         return props.onSubmit(e);
     }
 
-    const handleRules = () => {
+    // const handleRules = () => {
         
-        let result = {};
-        let validation = {};
+    //     let result      = {};
+    //     let validation  = {};
         
-        props.children && React.Children.map(props.children, (child, index) => {
-            const {number, name, email, userequired} = child.props;
+    //     props.children && React.Children.map(props.children, (child, index) => {
+    //         const {number, name, email, userequired} = child.props;
 
-            const setRequired = () => {
-                return userequired === 'true' ? {required: true} : {required: false};
-            }
+    //         const setRequired = () => {
+    //             return userequired === 'true' ? {required: true} : {required: false};
+    //         }
 
-            const setType = () => {
-                if(number === 'true'){
-                    return {type: 'number'};
-                }else if(email === 'true'){
-                    return {type: 'email'};
-                }else{
-                    return null;
-                }
-            }
+    //         const setType = () => {
+    //             if(number === 'true'){
+    //                 return {type: 'number'};
+    //             }else if(email === 'true'){
+    //                 return {type: 'email'};
+    //             }else{
+    //                 return null;
+    //             }
+    //         }
             
-            result = {
-                ...result,
-                [name] : [
-                    setRequired(),
-                    setType()
-                ],
-            }
-        });
+    //         result = {
+    //             ...result,
+    //             [name] : [
+    //                 setRequired(),
+    //                 setType()
+    //             ],
+    //         }
+    //     });
 
-        setRules(result);  
-    }
+    //     setRules(result);  
+    // }
 
     const back = () => {
         history.push({
@@ -121,7 +122,9 @@ const customForm = props => {
     return(
         <div>
             <Button 
-                className="btn-info" onClick={() => back()} style={{marginBottom: 20}}
+                className="btn-info" 
+                onClick={() => back()} 
+                style={{marginBottom: 20, display: hideBack}}
             > Kembali </Button>
             <Form {...attributeForm}>
                 {React.Children.map(props.children, (child, index) => {
@@ -138,7 +141,7 @@ const customForm = props => {
                     )
                 })}
                 <div style={{marginTop: 20}}>
-                    <Button className="btn-info" onClick={() => back()}> Kembali </Button>
+                    <Button className="btn-info" style={{display: hideBack}} onClick={() => back()}> Kembali </Button>
                     <Button className="btn-success" style={{float: 'right'}} htmlType="submit" loading={loading}> Kirim </Button>
                 </div>
             </Form>
