@@ -17,7 +17,7 @@ class CreatePermissionsTable extends Migration
             $table->bigIncrements('id');
             $table->integer('user_group_id')->unsegned();
             $table->string('menu');
-            $table->string('access');
+            $table->string('access')->nullable();
             $table->timestamps();
         });
     }

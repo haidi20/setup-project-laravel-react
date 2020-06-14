@@ -4,7 +4,7 @@ import React, {useState, useEffect} from 'react';
 //supports
 import axios from '../../../../supports/axios';
 import listMenu from '../../../../supports/listComponent';
-import {alert, handleError} from '../../../../supports/helper';
+import {alert, handleError, isEmpty} from '../../../../supports/helper';
 
 import 'antd/lib/checkbox/style/css';
 import { 
@@ -13,7 +13,6 @@ import {
 
 const useAccess = props => {
     const nameRoute = '/permission';
-    const [access, setAccess]   = useState({});
     const [checked, setChecked] = useState({});
     const [clickMenu, setClickMenu] = useState({});
     const [state, setState] = useState({
@@ -38,16 +37,18 @@ const useAccess = props => {
         getAccess();
     }, [state.userGroup]);
 
-    const getAccess = async () => {
-        await axios({
+    const getAccess = () => {
+        !isEmpty(state.userGroup) &&
+        axios({
             method: 'get',
             url: nameRoute,
             params: state.userGroup,
         }).then(response => {
             let data = response.data;
+            // console.log(data);
             if(data.length != 0){
                 data.map(item => {
-                    if(item.access.length != 0){
+                    if(item.access != null){
                         let access = item.access.split(',');
 
                         access.map(value => {
@@ -65,7 +66,8 @@ const useAccess = props => {
                 });
             }
         }).catch(function (error) {
-            handleError(error);
+            console.log(error);
+            // handleError(error);
         });
     }
 
@@ -130,14 +132,19 @@ const useAccess = props => {
             access: access,
             user_group_id: state.userGroup.id
         }
-
+        
+        !isEmpty(clickMenu) && 
         axios({
             method: 'post',
             url: nameRoute + '/store',
             data:data
         }).then(response => {
-            console.log(response);
-        })
+            // console.log(response);
+            // alert(response);
+        }).catch(error => {
+            console.log(error);
+            // handleError(error);
+        });
     }
 
     return {

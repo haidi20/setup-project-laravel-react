@@ -20,16 +20,15 @@ class PermissionController extends Controller
         // return request()->all();
         if(request('menu')){
             try {
-                Permission::updateOrCreate([
+                $data = Permission::updateOrCreate([
                     'menu'          => request('menu'),
-                    'access'        => request('access'),
                     'user_group_id' => request('user_group_id'),
-                ]);
+                ], ['access' => request('access')]);
             } catch (\Execption $e) {
                 return response()->json('Maaf, Data Tidak Berhasil Terkirim', 500);
             }
     
-            return response()->json('Data Berhasil Terkirim', 200);
+            return response()->json($data, 200);
         }
     }
 }

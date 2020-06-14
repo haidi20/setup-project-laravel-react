@@ -19,10 +19,10 @@ const access = props => {
     } = useAccess();
 
     useEffect(() => {
-        insertDataEdit();
+        getUserGroup();
     }, [])
 
-    const insertDataEdit = () => {
+    const getUserGroup = () => {
         if(props.location.state != undefined){
             let data = props.location.state;
 
