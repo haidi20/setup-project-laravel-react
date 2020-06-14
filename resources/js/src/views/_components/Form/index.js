@@ -37,8 +37,6 @@ const customForm = props => {
         let data = props.state;
         let passing = {...data};
 
-        console.log(passing);
-
         form.setFieldsValue(passing);
     }, [props.state]);
 
@@ -79,40 +77,6 @@ const customForm = props => {
         return props.onSubmit(e);
     }
 
-    // const handleRules = () => {
-        
-    //     let result      = {};
-    //     let validation  = {};
-        
-    //     props.children && React.Children.map(props.children, (child, index) => {
-    //         const {number, name, email, userequired} = child.props;
-
-    //         const setRequired = () => {
-    //             return userequired === 'true' ? {required: true} : {required: false};
-    //         }
-
-    //         const setType = () => {
-    //             if(number === 'true'){
-    //                 return {type: 'number'};
-    //             }else if(email === 'true'){
-    //                 return {type: 'email'};
-    //             }else{
-    //                 return null;
-    //             }
-    //         }
-            
-    //         result = {
-    //             ...result,
-    //             [name] : [
-    //                 setRequired(),
-    //                 setType()
-    //             ],
-    //         }
-    //     });
-
-    //     setRules(result);  
-    // }
-
     const back = () => {
         history.push({
             pathname: props.back,
@@ -151,3 +115,41 @@ const customForm = props => {
 }
 
 export default customForm;
+
+
+
+
+
+// const handleRules = () => {
+        
+    //     let result      = {};
+    //     let validation  = {};
+        
+    //     props.children && React.Children.map(props.children, (child, index) => {
+    //         const {number, name, email, userequired} = child.props;
+
+    //         const setRequired = () => {
+    //             return userequired === 'true' ? {required: true} : {required: false};
+    //         }
+
+    //         const setType = () => {
+    //             if(number === 'true'){
+    //                 return {type: 'number'};
+    //             }else if(email === 'true'){
+    //                 return {type: 'email'};
+    //             }else{
+    //                 return null;
+    //             }
+    //         }
+            
+    //         result = {
+    //             ...result,
+    //             [name] : [
+    //                 setRequired(),
+    //                 setType()
+    //             ],
+    //         }
+    //     });
+
+    //     setRules(result);  
+    // }
