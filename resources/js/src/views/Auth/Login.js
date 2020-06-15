@@ -23,22 +23,28 @@ const login = () => {
         name: null,
         password: null,
     });
+    const [loading, setLoading] = useState(false);
 
     const rules = {
-        name: [],
-        password: [],
+        name: [required],
+        password: [required],
     }
 
     const onSubmit = e => {
+        console.log(e);
+
         axios({
             method: 'post',
             url: '/auth/login',
-            data: {name: 'nata', password: 'samarinda'},
+            data: {name: state.name, password: state.password},
         }).then(response => {
             console.log(response);
+            setTimeout(() => {
+                setLoading(false);
+            }, 3000)
         }).catch(function (error) {
             console.log(error);
-            // handleError(error);
+            setLoading(false);
         });
     }
 
@@ -46,13 +52,17 @@ const login = () => {
         state: state,
         rules: rules,
         hideBack: true,
+        loading: loading,
+        setLoading: setLoading,
         // back: nameRoute,
         onSubmit:e => onSubmit(e),
     }
 
     const handleOnChange = e => {
-        // console.log(e.target.value);
-        
+        setState({
+            ...state,
+            [e.target.name]: e.target.value
+        });      
     }
 
     const styled = {
@@ -69,8 +79,8 @@ const login = () => {
                     <div className="site-layout-background" >
                         <h1>Login</h1>
                         <Form {...attributeForm} >
-                            <Input name="name" label="Username" onChange={handleOnChange} value="nama"/>
-                            <Input type="password" name="password" label="Password" onChange={handleOnChange} value="keren"/>
+                            <Input name="name" label="Username" onChange={handleOnChange} value={state.name}/>
+                            <Input type="password" name="password" label="Password" onChange={handleOnChange} value={state.password}/>
                         </Form>
                     </div>
                 </Content>

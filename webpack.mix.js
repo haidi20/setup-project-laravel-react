@@ -13,7 +13,7 @@ const mix = require('laravel-mix');
 
 mix.react('resources/js/app.js', 'public/js')
    .sass('resources/sass/app.scss', 'public/css')
-   .sourceMaps();
+   // .sourceMaps();
 
 mix.babelConfig({
    plugins: ['@babel/plugin-syntax-dynamic-import'],
@@ -26,3 +26,5 @@ mix.webpackConfig({
       publicPath: '', 
    } 
 });
+
+mix.browserSync('localhost:8000');

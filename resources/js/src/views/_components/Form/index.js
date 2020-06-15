@@ -28,7 +28,6 @@ const tailLayout = {
 };
 
 const customForm = props => {
-    const [loading, setLoading] = useState(false);
     const [form]    = Form.useForm();
     const history   = useHistory();
     const hideBack  = props.hideBack ? 'none' : null;
@@ -72,7 +71,7 @@ const customForm = props => {
     }
 
     const handleOnFinish = e => {
-        setLoading(true);
+        props.setLoading(true);
 
         return props.onSubmit(e);
     }
@@ -106,7 +105,7 @@ const customForm = props => {
                 })}
                 <div style={{marginTop: 20}}>
                     <Button className="btn-info" style={{display: hideBack}} onClick={() => back()}> Kembali </Button>
-                    <Button className="btn-success" style={{float: 'right'}} htmlType="submit" loading={loading}> Kirim </Button>
+                    <Button className="btn-success" style={{float: 'right'}} htmlType="submit" loading={props.loading}> Kirim </Button>
                 </div>
             </Form>
             

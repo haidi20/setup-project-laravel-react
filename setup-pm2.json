@@ -1,0 +1,26 @@
+{
+    "apps": [
+        {
+            "name": "backend project setup",
+            "script": "artisan",
+            "instances": 1,
+            "interpreter": "php",
+            "exec_mode": "fork",
+            "args": ["serve"]
+        },
+        {
+            "name": "server notification",
+            "instances": 1,
+            "exec_mode": "fork",
+            "script": "npm",
+            "args": "start"
+        },
+        {
+            "name": "watch",
+            "instances": 1,
+            "exec_mode": "fork",
+            "script": "npm",
+            "args": "watch"
+        }
+    ]
+}

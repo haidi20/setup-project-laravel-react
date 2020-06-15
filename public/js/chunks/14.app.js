@@ -8,7 +8,139 @@
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ \"./node_modules/react/index.js\");\n/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);\n/* harmony import */ var _supports_axios__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../../supports/axios */ \"./resources/js/src/supports/axios.js\");\n/* harmony import */ var _supports_helper__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../supports/helper */ \"./resources/js/src/supports/helper.js\");\n/* harmony import */ var _supports_validation__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../../supports/validation */ \"./resources/js/src/supports/validation.js\");\n/* harmony import */ var _components_Form__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../_components/Form */ \"./resources/js/src/views/_components/Form/index.js\");\n/* harmony import */ var antd_lib_row_style_css__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! antd/lib/row/style/css */ \"./node_modules/antd/lib/row/style/css.js\");\n/* harmony import */ var antd_lib_row_style_css__WEBPACK_IMPORTED_MODULE_5___default = /*#__PURE__*/__webpack_require__.n(antd_lib_row_style_css__WEBPACK_IMPORTED_MODULE_5__);\n/* harmony import */ var antd_lib_col_style_css__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! antd/lib/col/style/css */ \"./node_modules/antd/lib/col/style/css.js\");\n/* harmony import */ var antd_lib_col_style_css__WEBPACK_IMPORTED_MODULE_6___default = /*#__PURE__*/__webpack_require__.n(antd_lib_col_style_css__WEBPACK_IMPORTED_MODULE_6__);\n/* harmony import */ var antd_lib_input_style_css__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! antd/lib/input/style/css */ \"./node_modules/antd/lib/input/style/css.js\");\n/* harmony import */ var antd_lib_input_style_css__WEBPACK_IMPORTED_MODULE_7___default = /*#__PURE__*/__webpack_require__.n(antd_lib_input_style_css__WEBPACK_IMPORTED_MODULE_7__);\n/* harmony import */ var antd__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! antd */ \"./node_modules/antd/es/index.js\");\nfunction _slicedToArray(arr, i) { return _arrayWithHoles(arr) || _iterableToArrayLimit(arr, i) || _unsupportedIterableToArray(arr, i) || _nonIterableRest(); }\n\nfunction _nonIterableRest() { throw new TypeError(\"Invalid attempt to destructure non-iterable instance.\\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method.\"); }\n\nfunction _unsupportedIterableToArray(o, minLen) { if (!o) return; if (typeof o === \"string\") return _arrayLikeToArray(o, minLen); var n = Object.prototype.toString.call(o).slice(8, -1); if (n === \"Object\" && o.constructor) n = o.constructor.name; if (n === \"Map\" || n === \"Set\") return Array.from(o); if (n === \"Arguments\" || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(n)) return _arrayLikeToArray(o, minLen); }\n\nfunction _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len = arr.length; for (var i = 0, arr2 = new Array(len); i < len; i++) { arr2[i] = arr[i]; } return arr2; }\n\nfunction _iterableToArrayLimit(arr, i) { if (typeof Symbol === \"undefined\" || !(Symbol.iterator in Object(arr))) return; var _arr = []; var _n = true; var _d = false; var _e = undefined; try { for (var _i = arr[Symbol.iterator](), _s; !(_n = (_s = _i.next()).done); _n = true) { _arr.push(_s.value); if (i && _arr.length === i) break; } } catch (err) { _d = true; _e = err; } finally { try { if (!_n && _i[\"return\"] != null) _i[\"return\"](); } finally { if (_d) throw _e; } } return _arr; }\n\nfunction _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }\n\n // support\n\n\n\n // components\n\n\n\n\n\n\nvar Content = antd__WEBPACK_IMPORTED_MODULE_8__[\"Layout\"].Content;\n\nvar login = function login() {\n  var nameRoute = '/login';\n\n  var _useState = Object(react__WEBPACK_IMPORTED_MODULE_0__[\"useState\"])({\n    name: null,\n    password: null\n  }),\n      _useState2 = _slicedToArray(_useState, 2),\n      state = _useState2[0],\n      setState = _useState2[1];\n\n  var rules = {\n    name: [],\n    password: []\n  };\n\n  var _onSubmit = function onSubmit(e) {\n    Object(_supports_axios__WEBPACK_IMPORTED_MODULE_1__[\"default\"])({\n      method: 'post',\n      url: '/auth/login',\n      data: {\n        name: 'nata',\n        password: 'samarinda'\n      }\n    }).then(function (response) {\n      console.log(response);\n    })[\"catch\"](function (error) {\n      console.log(error); // handleError(error);\n    });\n  };\n\n  var attributeForm = {\n    state: state,\n    rules: rules,\n    hideBack: true,\n    // back: nameRoute,\n    onSubmit: function onSubmit(e) {\n      return _onSubmit(e);\n    }\n  };\n\n  var handleOnChange = function handleOnChange(e) {// console.log(e.target.value);\n  };\n\n  var styled = {\n    layoutLogin: {\n      paddingTop: 50\n    }\n  };\n  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(antd__WEBPACK_IMPORTED_MODULE_8__[\"Row\"], {\n    gutter: 24\n  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(antd__WEBPACK_IMPORTED_MODULE_8__[\"Col\"], {\n    md: 8\n  }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(antd__WEBPACK_IMPORTED_MODULE_8__[\"Col\"], {\n    xs: 24,\n    md: 8\n  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(Content, {\n    style: styled.layoutLogin\n  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(\"div\", {\n    className: \"site-layout-background\"\n  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(\"h1\", null, \"Login\"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_components_Form__WEBPACK_IMPORTED_MODULE_4__[\"default\"], attributeForm, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(antd__WEBPACK_IMPORTED_MODULE_8__[\"Input\"], {\n    name: \"name\",\n    label: \"Username\",\n    onChange: handleOnChange,\n    value: \"nama\"\n  }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(antd__WEBPACK_IMPORTED_MODULE_8__[\"Input\"], {\n    type: \"password\",\n    name: \"password\",\n    label: \"Password\",\n    onChange: handleOnChange,\n    value: \"keren\"\n  }))))));\n};\n\n/* harmony default export */ __webpack_exports__[\"default\"] = (login);//# sourceURL=[module]\n//# sourceMappingURL=data:application/json;charset=utf-8;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbIndlYnBhY2s6Ly8vLi9yZXNvdXJjZXMvanMvc3JjL3ZpZXdzL0F1dGgvTG9naW4uanM/N2U3ZiJdLCJuYW1lcyI6WyJDb250ZW50IiwiTGF5b3V0IiwibG9naW4iLCJuYW1lUm91dGUiLCJ1c2VTdGF0ZSIsIm5hbWUiLCJwYXNzd29yZCIsInN0YXRlIiwic2V0U3RhdGUiLCJydWxlcyIsIm9uU3VibWl0IiwiZSIsImF4aW9zIiwibWV0aG9kIiwidXJsIiwiZGF0YSIsInRoZW4iLCJyZXNwb25zZSIsImNvbnNvbGUiLCJsb2ciLCJlcnJvciIsImF0dHJpYnV0ZUZvcm0iLCJoaWRlQmFjayIsImhhbmRsZU9uQ2hhbmdlIiwic3R5bGVkIiwibGF5b3V0TG9naW4iLCJwYWRkaW5nVG9wIl0sIm1hcHBpbmdzIjoiOzs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7OztDQUVBOztBQUNBO0FBQ0E7Q0FLQTs7QUFDQTtBQUVBO0FBQ0E7QUFDQTtBQUNBO0lBRVFBLE8sR0FBY0MsMkMsQ0FBZEQsTzs7QUFFUixJQUFNRSxLQUFLLEdBQUcsU0FBUkEsS0FBUSxHQUFNO0FBQ2hCLE1BQU1DLFNBQVMsR0FBRyxRQUFsQjs7QUFEZ0Isa0JBRVVDLHNEQUFRLENBQUM7QUFDL0JDLFFBQUksRUFBRSxJQUR5QjtBQUUvQkMsWUFBUSxFQUFFO0FBRnFCLEdBQUQsQ0FGbEI7QUFBQTtBQUFBLE1BRVRDLEtBRlM7QUFBQSxNQUVGQyxRQUZFOztBQU9oQixNQUFNQyxLQUFLLEdBQUc7QUFDVkosUUFBSSxFQUFFLEVBREk7QUFFVkMsWUFBUSxFQUFFO0FBRkEsR0FBZDs7QUFLQSxNQUFNSSxTQUFRLEdBQUcsU0FBWEEsUUFBVyxDQUFBQyxDQUFDLEVBQUk7QUFDbEJDLG1FQUFLLENBQUM7QUFDRkMsWUFBTSxFQUFFLE1BRE47QUFFRkMsU0FBRyxFQUFFLGFBRkg7QUFHRkMsVUFBSSxFQUFFO0FBQUNWLFlBQUksRUFBRSxNQUFQO0FBQWVDLGdCQUFRLEVBQUU7QUFBekI7QUFISixLQUFELENBQUwsQ0FJR1UsSUFKSCxDQUlRLFVBQUFDLFFBQVEsRUFBSTtBQUNoQkMsYUFBTyxDQUFDQyxHQUFSLENBQVlGLFFBQVo7QUFDSCxLQU5ELFdBTVMsVUFBVUcsS0FBVixFQUFpQjtBQUN0QkYsYUFBTyxDQUFDQyxHQUFSLENBQVlDLEtBQVosRUFEc0IsQ0FFdEI7QUFDSCxLQVREO0FBVUgsR0FYRDs7QUFhQSxNQUFNQyxhQUFhLEdBQUc7QUFDbEJkLFNBQUssRUFBRUEsS0FEVztBQUVsQkUsU0FBSyxFQUFFQSxLQUZXO0FBR2xCYSxZQUFRLEVBQUUsSUFIUTtBQUlsQjtBQUNBWixZQUFRLEVBQUMsa0JBQUFDLENBQUM7QUFBQSxhQUFJRCxTQUFRLENBQUNDLENBQUQsQ0FBWjtBQUFBO0FBTFEsR0FBdEI7O0FBUUEsTUFBTVksY0FBYyxHQUFHLFNBQWpCQSxjQUFpQixDQUFBWixDQUFDLEVBQUksQ0FDeEI7QUFFSCxHQUhEOztBQUtBLE1BQU1hLE1BQU0sR0FBRztBQUNYQyxlQUFXLEVBQUU7QUFDVEMsZ0JBQVUsRUFBRTtBQURIO0FBREYsR0FBZjtBQU1BLHNCQUNJLDJEQUFDLHdDQUFEO0FBQUssVUFBTSxFQUFFO0FBQWIsa0JBQ0ksMkRBQUMsd0NBQUQ7QUFBSyxNQUFFLEVBQUU7QUFBVCxJQURKLGVBRUksMkRBQUMsd0NBQUQ7QUFBSyxNQUFFLEVBQUUsRUFBVDtBQUFhLE1BQUUsRUFBRTtBQUFqQixrQkFDSSwyREFBQyxPQUFEO0FBQVMsU0FBSyxFQUFFRixNQUFNLENBQUNDO0FBQXZCLGtCQUNJO0FBQUssYUFBUyxFQUFDO0FBQWYsa0JBQ0ksK0VBREosZUFFSSwyREFBQyx3REFBRCxFQUFVSixhQUFWLGVBQ0ksMkRBQUMsMENBQUQ7QUFBTyxRQUFJLEVBQUMsTUFBWjtBQUFtQixTQUFLLEVBQUMsVUFBekI7QUFBb0MsWUFBUSxFQUFFRSxjQUE5QztBQUE4RCxTQUFLLEVBQUM7QUFBcEUsSUFESixlQUVJLDJEQUFDLDBDQUFEO0FBQU8sUUFBSSxFQUFDLFVBQVo7QUFBdUIsUUFBSSxFQUFDLFVBQTVCO0FBQXVDLFNBQUssRUFBQyxVQUE3QztBQUF3RCxZQUFRLEVBQUVBLGNBQWxFO0FBQWtGLFNBQUssRUFBQztBQUF4RixJQUZKLENBRkosQ0FESixDQURKLENBRkosQ0FESjtBQWdCSCxDQTVERDs7QUE4RGVyQixvRUFBZiIsImZpbGUiOiIuL3Jlc291cmNlcy9qcy9zcmMvdmlld3MvQXV0aC9Mb2dpbi5qcy5qcyIsInNvdXJjZXNDb250ZW50IjpbImltcG9ydCBSZWFjdCwge3VzZVN0YXRlLCB1c2VFZmZlY3R9IGZyb20gJ3JlYWN0JztcblxuLy8gc3VwcG9ydFxuaW1wb3J0IGF4aW9zIGZyb20gJy4uLy4uL3N1cHBvcnRzL2F4aW9zJztcbmltcG9ydCB7YWxlcnQsIGhhbmRsZUVycm9yfSBmcm9tICcuLi8uLi9zdXBwb3J0cy9oZWxwZXInO1xuaW1wb3J0IHtcbiAgICByZXF1aXJlZFxufSBmcm9tICcuLi8uLi9zdXBwb3J0cy92YWxpZGF0aW9uJztcblxuLy8gY29tcG9uZW50c1xuaW1wb3J0IEZvcm0gZnJvbSAnLi4vX2NvbXBvbmVudHMvRm9ybSc7XG5cbmltcG9ydCAnYW50ZC9saWIvcm93L3N0eWxlL2Nzcyc7XG5pbXBvcnQgJ2FudGQvbGliL2NvbC9zdHlsZS9jc3MnO1xuaW1wb3J0ICdhbnRkL2xpYi9pbnB1dC9zdHlsZS9jc3MnO1xuaW1wb3J0IHsgSW5wdXQsIFJvdywgQ29sLCBMYXlvdXQgfSBmcm9tICdhbnRkJztcblxuY29uc3QgeyBDb250ZW50IH0gICA9IExheW91dDtcblxuY29uc3QgbG9naW4gPSAoKSA9PiB7XG4gICAgY29uc3QgbmFtZVJvdXRlID0gJy9sb2dpbic7XG4gICAgY29uc3QgW3N0YXRlLCBzZXRTdGF0ZV0gPSB1c2VTdGF0ZSh7XG4gICAgICAgIG5hbWU6IG51bGwsXG4gICAgICAgIHBhc3N3b3JkOiBudWxsLFxuICAgIH0pO1xuXG4gICAgY29uc3QgcnVsZXMgPSB7XG4gICAgICAgIG5hbWU6IFtdLFxuICAgICAgICBwYXNzd29yZDogW10sXG4gICAgfVxuXG4gICAgY29uc3Qgb25TdWJtaXQgPSBlID0+IHtcbiAgICAgICAgYXhpb3Moe1xuICAgICAgICAgICAgbWV0aG9kOiAncG9zdCcsXG4gICAgICAgICAgICB1cmw6ICcvYXV0aC9sb2dpbicsXG4gICAgICAgICAgICBkYXRhOiB7bmFtZTogJ25hdGEnLCBwYXNzd29yZDogJ3NhbWFyaW5kYSd9LFxuICAgICAgICB9KS50aGVuKHJlc3BvbnNlID0+IHtcbiAgICAgICAgICAgIGNvbnNvbGUubG9nKHJlc3BvbnNlKTtcbiAgICAgICAgfSkuY2F0Y2goZnVuY3Rpb24gKGVycm9yKSB7XG4gICAgICAgICAgICBjb25zb2xlLmxvZyhlcnJvcik7XG4gICAgICAgICAgICAvLyBoYW5kbGVFcnJvcihlcnJvcik7XG4gICAgICAgIH0pO1xuICAgIH1cblxuICAgIGNvbnN0IGF0dHJpYnV0ZUZvcm0gPSB7XG4gICAgICAgIHN0YXRlOiBzdGF0ZSxcbiAgICAgICAgcnVsZXM6IHJ1bGVzLFxuICAgICAgICBoaWRlQmFjazogdHJ1ZSxcbiAgICAgICAgLy8gYmFjazogbmFtZVJvdXRlLFxuICAgICAgICBvblN1Ym1pdDplID0+IG9uU3VibWl0KGUpLFxuICAgIH1cblxuICAgIGNvbnN0IGhhbmRsZU9uQ2hhbmdlID0gZSA9PiB7XG4gICAgICAgIC8vIGNvbnNvbGUubG9nKGUudGFyZ2V0LnZhbHVlKTtcbiAgICAgICAgXG4gICAgfVxuXG4gICAgY29uc3Qgc3R5bGVkID0ge1xuICAgICAgICBsYXlvdXRMb2dpbjoge1xuICAgICAgICAgICAgcGFkZGluZ1RvcDogNTAsXG4gICAgICAgIH1cbiAgICB9XG5cbiAgICByZXR1cm4gKFxuICAgICAgICA8Um93IGd1dHRlcj17MjR9PlxuICAgICAgICAgICAgPENvbCBtZD17OH0+PC9Db2w+XG4gICAgICAgICAgICA8Q29sIHhzPXsyNH0gbWQ9ezh9PlxuICAgICAgICAgICAgICAgIDxDb250ZW50IHN0eWxlPXtzdHlsZWQubGF5b3V0TG9naW59PlxuICAgICAgICAgICAgICAgICAgICA8ZGl2IGNsYXNzTmFtZT1cInNpdGUtbGF5b3V0LWJhY2tncm91bmRcIiA+XG4gICAgICAgICAgICAgICAgICAgICAgICA8aDE+TG9naW48L2gxPlxuICAgICAgICAgICAgICAgICAgICAgICAgPEZvcm0gey4uLmF0dHJpYnV0ZUZvcm19ID5cbiAgICAgICAgICAgICAgICAgICAgICAgICAgICA8SW5wdXQgbmFtZT1cIm5hbWVcIiBsYWJlbD1cIlVzZXJuYW1lXCIgb25DaGFuZ2U9e2hhbmRsZU9uQ2hhbmdlfSB2YWx1ZT1cIm5hbWFcIi8+XG4gICAgICAgICAgICAgICAgICAgICAgICAgICAgPElucHV0IHR5cGU9XCJwYXNzd29yZFwiIG5hbWU9XCJwYXNzd29yZFwiIGxhYmVsPVwiUGFzc3dvcmRcIiBvbkNoYW5nZT17aGFuZGxlT25DaGFuZ2V9IHZhbHVlPVwia2VyZW5cIi8+XG4gICAgICAgICAgICAgICAgICAgICAgICA8L0Zvcm0+XG4gICAgICAgICAgICAgICAgICAgIDwvZGl2PlxuICAgICAgICAgICAgICAgIDwvQ29udGVudD5cbiAgICAgICAgICAgIDwvQ29sPlxuICAgICAgICA8L1Jvdz5cbiAgICApO1xufTtcblxuZXhwb3J0IGRlZmF1bHQgbG9naW47Il0sInNvdXJjZVJvb3QiOiIifQ==\n//# sourceURL=webpack-internal:///./resources/js/src/views/Auth/Login.js\n");
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var _supports_axios__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../../supports/axios */ "./resources/js/src/supports/axios.js");
+/* harmony import */ var _supports_helper__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../supports/helper */ "./resources/js/src/supports/helper.js");
+/* harmony import */ var _supports_validation__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../../supports/validation */ "./resources/js/src/supports/validation.js");
+/* harmony import */ var _components_Form__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../_components/Form */ "./resources/js/src/views/_components/Form/index.js");
+/* harmony import */ var antd_lib_row_style_css__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! antd/lib/row/style/css */ "./node_modules/antd/lib/row/style/css.js");
+/* harmony import */ var antd_lib_row_style_css__WEBPACK_IMPORTED_MODULE_5___default = /*#__PURE__*/__webpack_require__.n(antd_lib_row_style_css__WEBPACK_IMPORTED_MODULE_5__);
+/* harmony import */ var antd_lib_col_style_css__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! antd/lib/col/style/css */ "./node_modules/antd/lib/col/style/css.js");
+/* harmony import */ var antd_lib_col_style_css__WEBPACK_IMPORTED_MODULE_6___default = /*#__PURE__*/__webpack_require__.n(antd_lib_col_style_css__WEBPACK_IMPORTED_MODULE_6__);
+/* harmony import */ var antd_lib_input_style_css__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! antd/lib/input/style/css */ "./node_modules/antd/lib/input/style/css.js");
+/* harmony import */ var antd_lib_input_style_css__WEBPACK_IMPORTED_MODULE_7___default = /*#__PURE__*/__webpack_require__.n(antd_lib_input_style_css__WEBPACK_IMPORTED_MODULE_7__);
+/* harmony import */ var antd__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! antd */ "./node_modules/antd/es/index.js");
+function ownKeys(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); if (enumerableOnly) symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; }); keys.push.apply(keys, symbols); } return keys; }
+
+function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i] != null ? arguments[i] : {}; if (i % 2) { ownKeys(Object(source), true).forEach(function (key) { _defineProperty(target, key, source[key]); }); } else if (Object.getOwnPropertyDescriptors) { Object.defineProperties(target, Object.getOwnPropertyDescriptors(source)); } else { ownKeys(Object(source)).forEach(function (key) { Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key)); }); } } return target; }
+
+function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+
+function _slicedToArray(arr, i) { return _arrayWithHoles(arr) || _iterableToArrayLimit(arr, i) || _unsupportedIterableToArray(arr, i) || _nonIterableRest(); }
+
+function _nonIterableRest() { throw new TypeError("Invalid attempt to destructure non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); }
+
+function _unsupportedIterableToArray(o, minLen) { if (!o) return; if (typeof o === "string") return _arrayLikeToArray(o, minLen); var n = Object.prototype.toString.call(o).slice(8, -1); if (n === "Object" && o.constructor) n = o.constructor.name; if (n === "Map" || n === "Set") return Array.from(n); if (n === "Arguments" || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(n)) return _arrayLikeToArray(o, minLen); }
+
+function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len = arr.length; for (var i = 0, arr2 = new Array(len); i < len; i++) { arr2[i] = arr[i]; } return arr2; }
+
+function _iterableToArrayLimit(arr, i) { if (typeof Symbol === "undefined" || !(Symbol.iterator in Object(arr))) return; var _arr = []; var _n = true; var _d = false; var _e = undefined; try { for (var _i = arr[Symbol.iterator](), _s; !(_n = (_s = _i.next()).done); _n = true) { _arr.push(_s.value); if (i && _arr.length === i) break; } } catch (err) { _d = true; _e = err; } finally { try { if (!_n && _i["return"] != null) _i["return"](); } finally { if (_d) throw _e; } } return _arr; }
+
+function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
+
+ // support
+
+
+
+ // components
+
+
+
+
+
+
+var Content = antd__WEBPACK_IMPORTED_MODULE_8__["Layout"].Content;
+
+var login = function login() {
+  var nameRoute = '/login';
+
+  var _useState = Object(react__WEBPACK_IMPORTED_MODULE_0__["useState"])({
+    name: null,
+    password: null
+  }),
+      _useState2 = _slicedToArray(_useState, 2),
+      state = _useState2[0],
+      setState = _useState2[1];
+
+  var _useState3 = Object(react__WEBPACK_IMPORTED_MODULE_0__["useState"])(false),
+      _useState4 = _slicedToArray(_useState3, 2),
+      loading = _useState4[0],
+      setLoading = _useState4[1];
+
+  var rules = {
+    name: [_supports_validation__WEBPACK_IMPORTED_MODULE_3__["required"]],
+    password: [_supports_validation__WEBPACK_IMPORTED_MODULE_3__["required"]]
+  };
+
+  var _onSubmit = function onSubmit(e) {
+    console.log(e);
+    Object(_supports_axios__WEBPACK_IMPORTED_MODULE_1__["default"])({
+      method: 'post',
+      url: '/auth/login',
+      data: {
+        name: state.name,
+        password: state.password
+      }
+    }).then(function (response) {
+      console.log(response);
+      setTimeout(function () {
+        setLoading(false);
+      }, 3000);
+    })["catch"](function (error) {
+      console.log(error);
+      setLoading(false);
+    });
+  };
+
+  var attributeForm = {
+    state: state,
+    rules: rules,
+    hideBack: true,
+    loading: loading,
+    setLoading: setLoading,
+    // back: nameRoute,
+    onSubmit: function onSubmit(e) {
+      return _onSubmit(e);
+    }
+  };
+
+  var handleOnChange = function handleOnChange(e) {
+    setState(_objectSpread({}, state, _defineProperty({}, e.target.name, e.target.value)));
+  };
+
+  var styled = {
+    layoutLogin: {
+      paddingTop: 50
+    }
+  };
+  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(antd__WEBPACK_IMPORTED_MODULE_8__["Row"], {
+    gutter: 24
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(antd__WEBPACK_IMPORTED_MODULE_8__["Col"], {
+    md: 8
+  }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(antd__WEBPACK_IMPORTED_MODULE_8__["Col"], {
+    xs: 24,
+    md: 8
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(Content, {
+    style: styled.layoutLogin
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    className: "site-layout-background"
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h1", null, "Login"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_components_Form__WEBPACK_IMPORTED_MODULE_4__["default"], attributeForm, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(antd__WEBPACK_IMPORTED_MODULE_8__["Input"], {
+    name: "name",
+    label: "Username",
+    onChange: handleOnChange,
+    value: state.name
+  }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(antd__WEBPACK_IMPORTED_MODULE_8__["Input"], {
+    type: "password",
+    name: "password",
+    label: "Password",
+    onChange: handleOnChange,
+    value: state.password
+  }))))));
+};
+
+/* harmony default export */ __webpack_exports__["default"] = (login);
 
 /***/ })
 
